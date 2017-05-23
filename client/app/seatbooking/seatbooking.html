@@ -1,0 +1,85 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <div id="myModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Enter Payment Details</h4>
+              </div>
+              <div class="modal-body">
+                <input Type="text" placeholder="UserName" ng-model="seatbookingCtrl.userName"/>
+                <input type="number" placeholder="Mobile Number" ng-model="seatbookingCtrl.mobile"/>
+                <h5>Choose Card</h5>
+                <input type="radio" />Credit Card<input type="radio"/>Debit Card<i class="fa fa-cc-visa"/><i class="fa fa-cc-amex"/><i class="fa fa-cc-mastercard"/><i class="fa fa-cc-paypal"/>
+                <h4>Enter Card Details</h4>
+                <input type="Number" placeholder="16 digit card number"/>
+                <input type="Date"/>Exipry date
+                <input type="number"/><i class="fa fa-credit-card-alt"/> CVV
+                <button class="btn btn-primary" ng-click="seatbookingCtrl.bookSeats()" data-dismiss="modal">Make A Payment</button>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      <table class="{{seatbookingCtrl.GoldClassSelection}}"><caption><h5>Gold</h5></caption>
+        <tr>
+          <td></td>
+          <td ng-repeat="num in seatbookingCtrl.goldClassRowNum">{{num}}</td>
+        </tr>
+        <tr ng-repeat="row in seatbookingCtrl.seatBookings[0].GoldClassSeats">
+          <td>{{row.Row}}</td>
+          <td ng-repeat="seat in row.SeatsInRow"><div ng-click="seatbookingCtrl.bookSeat(seat)" class="{{seat.Class}}" id={{seat.Seat}}><img class="sofa" src="assets/images/sofa.jpg" alt="sofa image not available"></img></div></td>
+          <td>{{row.Row}}</td>
+        </tr>
+      </table>
+
+      <table class="{{seatbookingCtrl.SilverClassSelection}}"><caption><h5>Silver</h5></caption>
+        <tr>
+          <td></td>
+          <td ng-repeat="num in seatbookingCtrl.silverClassRowNum">{{num}}</td>
+        </tr>
+        <tr ng-repeat="row in seatbookingCtrl.seatBookings[0].SilverClassSeats">
+          <td>{{row.Row}}</td>
+          <td ng-repeat="seat in row.SeatsInRow"><div ng-click="seatbookingCtrl.bookSeat(seat)" class="{{seat.Class}}" id={{seat.Seat}}><img class="chair" src="assets/images/chair.jpg" alt="sofa image not available"></img></div></td>
+          <td>{{row.Row}}</td>
+        </tr>
+      </table>
+
+      <div class="screenmsg"><h5> Screen Towards This Side </h5></div>
+      <div><img class="screen" src="assets/images/screen.png" alt="screen image not available"></img></div>
+    </div>
+    <div class="col-md-1"></div>
+    <div class="col-md-5"><hr/>
+    <div align="center"><button type="button" class="btn btn-primary" ng-click="seatbookingCtrl.doAnotherBooking()">Proceed For Another Booking</button></div>
+    <hr/><h3 align="center">Payment Details</h3><hr/>
+      <div><span ng-repeat="ticket in seatbookingCtrl.seatsDetails"><i class="fa fa-ticket">{{ticket}}</i><span></div>
+      <h5>Gold Class Price per Ticket <span style="color:red">{{seatbookingCtrl.seatBookings[0].GoldClassPrice}}<i class="fa fa-inr"/></span></h5>
+      <h5>Silver Class Price per Ticket <span style="color:red">{{seatbookingCtrl.seatBookings[0].SilverClassPrice}}<i class="fa fa-inr"/></span></h5>
+      <h5>Number Of Seats booked <span style="color:red">{{seatbookingCtrl.noOfTickets}}<i class="fa fa-users"/></span></h5><hr/>
+      <h5>Total Price <span style="color:red">{{seatbookingCtrl.totalPrice}}<i class="fa fa-inr"/></span></h5><hr/>
+
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Proceed To Payment</button>
+
+      <h3 align="center">Ticket Details</h3><hr/>
+      <div class="row">
+      <div class="col-md-9">
+      <div><h5>UserName <span style="color:red">{{seatbookingCtrl.userName}}</span>
+      MobileNumber <span style="color:red">{{seatbookingCtrl.mobile}} </span>
+      Seats<div><span ng-repeat="ticket in seatbookingCtrl.seatsDetailsFinal"><i class="fa fa-ticket">{{ticket}}</i><span></div>
+      <h5>Number Of Seats booked <span style="color:red">{{seatbookingCtrl.noOfTicketsFinal}}<i class="fa fa-users"/></span>
+      Total Price <span style="color:red">{{seatbookingCtrl.totalPriceFinal}}<i class="fa fa-inr"/></span></h5></div>
+      </div>
+      <div class="col-md-3">
+      <img class="barcode" src="{{seatbookingCtrl.barcode}}"/>
+      </div>
+    </div>
+    <div class="row">
+      <img class="offers" src="{{seatbookingCtrl.offers}}"/><hr/>
+  </div>
+  </div>
+</div>
+</div>

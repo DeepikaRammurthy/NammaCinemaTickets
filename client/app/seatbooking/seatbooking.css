@@ -1,0 +1,74 @@
+.seat{
+  color:black;
+  width:20px;
+  height:20px;
+  text-align:center;
+  border-radius: 30%;
+  background-color: mistyrose;
+  padding:1px;
+}
+
+.seatBooked{
+  color:black;
+  width:20px;
+  height:20px;
+  text-align:center;
+  border-radius: 30%;
+  background-color: grey;
+  padding:1px;
+  pointer-events: none;
+}
+
+.seatBooked img{
+  display:none;
+  background-color: mistyrose;
+}
+
+.ClassDeselected div
+{
+  color:black;
+  width:20px;
+  height:20px;
+  text-align:center;
+  border-radius: 30%;
+  background-color: grey;
+  padding:1px;
+  pointer-events: none;
+}
+
+.ClassDeselected div img{
+  display:none;
+}
+
+table{
+  /*margin-left: 75px;*/
+}
+td{padding-left:20px;
+  padding-top:20px;
+   font-size: 10px;
+}
+.green{
+  background-color: lightgreen;
+}
+.screen{
+  width:650px;
+  /*margin-left: 50px;*/
+}
+.barcode{
+  height:50px;
+  width:50px;
+}
+.screenmsg{
+  margin-left: 250px;
+}
+.chair{
+  width:20px;
+  height:20px;
+}
+.sofa{
+  width:16px;
+  height:22px;
+}
+h4{
+ color:black;
+ }

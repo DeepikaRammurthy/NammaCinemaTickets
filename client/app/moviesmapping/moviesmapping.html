@@ -1,0 +1,112 @@
+<head>
+
+</head>
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <select class="form-control" ng-model="moviesmappingCtrl.selectedMovieName" ng-model="moviesmappingCtrl.selectedMovieName">
+          <option ng-repeat="movie in moviesmappingCtrl.movieNames">{{movie.Name}}</option>
+        </select>
+      </div>
+
+      <div class="col-md-6">
+        <select class="form-control" ng-model="moviesmappingCtrl.selectedCityName">
+          <option ng-repeat="city in moviesmappingCtrl.cityNames track by $index">{{city}}</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-5"> All Theatres Names
+        <select multiple="multiple" size="6" class="form-control" ng-model="moviesmappingCtrl.selectedTheatreOption">
+          <option ng-repeat="theatres in moviesmappingCtrl.theatreDetails">{{theatres.TheatreName}}:{{theatres.PlaceName}}</option>
+        </select>
+      </div>
+      <div class="col-md-2"></br>
+        <input style="margin-left:50px" type="button" id="singleselect" value=" >> " ng-click="moviesmappingCtrl.addSelectedTheatres()"></input></br>
+        <input style="margin-left:50px" type="button" id="multipleselect" value=">>>" ng-click="moviesmappingCtrl.addAllTheatres()"></input></br>
+        <input style="margin-left:50px" type="button" id="singlereverse" value=" << " ng-click="moviesmappingCtrl.reverseSelectedTheatres()"></input></br>
+        <input style="margin-left:50px" type="button" id="multiplereverse" value="<<<" ng-click="moviesmappingCtrl.reverseAllTheatres()"></input></br>
+      </div>
+      <div class="col-md-5">Selected Theatres Names
+        <select id="theatresselected" multiple="multiple" size="6" class="form-control" ng-model="moviesmappingCtrl.reversedTheatreOption">
+          <option ng-repeat="theatres in moviesmappingCtrl.selectedTheatres">{{theatres.TheatreName}}:{{theatres.PlaceName}}</option>
+        </select>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-2">
+      </div>
+      <div class="col-md-10">
+        <table border="2">
+          <tr><th width="200px">TheatreName</th><th width="200px">PlaceName</th><th width="200px">ShowTimes</th></tr>
+          <tr ng-repeat="theatre in moviesmappingCtrl.displayTheatres"><td>{{theatre.TheatreName}}</td><td>{{theatre.PlaceName}}</td>
+          <td><table><tr><td border="2" ng-repeat="showtime in theatre.ShowTimes" ng-click="moviesmappingCtrl.addTimes(showtime,theatre)"><span class="glyphicon glyphicon-time">{{showtime.showTime}}</span><td>
+          </tr></table></td></tr>
+          </table>
+        </div>
+      </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div>
+        <button class="showDates" style="width:100px ;margin:5px ; height:40px" ng-repeat="dates in moviesmappingCtrl.displayDates" ng-click="moviesmappingCtrl.addDates(dates)">
+          <span class="glyphicon glyphicon-calendar">{{dates.date}}</span>
+        </button>
+      </div>
+    </div>
+  </div>
+    <div>
+      <button class="btn btn-success" ng-click="moviesmappingCtrl.saveMapping()">Save Mapping</button>
+      <button class="btn btn-success" ng-click="moviesmappingCtrl.fetchSeatbookings()">Fix Show Prices</button>
+    </div>
+    <h3>Mappings Available</h3>
+    <table border="2">
+        <tr>
+          <th>Movie Name</th>
+          <th width="200px">TheatreName</th>
+          <th width="200px">PlaceName</th>
+          <th width="200px">ShowTimes</th>
+          <th>Dates</th>
+          <th>Edit</th>
+          <th>Delete</th>
+          <th>Save Edit Details</th>
+        </tr>
+        <tr ng-repeat="mapping in moviesmappingCtrl.mappings">
+          <td>{{mapping.MovieName}}</td>
+          <td>{{mapping.TheatreName}}</td>
+          <td>{{mapping.City}}</td>
+          <td>
+            <table>
+              <tr>
+                <td ng-repeat="showtimes in mapping.ShowTimings track by $index"><span class="glyphicon glyphicon-time">{{showtimes.showTime}}</span></td>
+              </tr>
+            </table>
+          </td>
+          <td>
+            <table>
+              <tr>
+                <td ng-repeat="date in mapping.MovieDates track by $index"><span class="glyphicon glyphicon-calendar">{{date}}</span></td>
+              </tr>
+            </table>
+          </td>
+          <td ng-click="moviesmappingCtrl.editMapping()"><span class="glyphicon glyphicon-pencil"</span></td>
+          <td ng-click="moviesmappingCtrl.deleteMapping(mapping)"><span class="glyphicon glyphicon-trash"</span></td>
+          <td><button class="btn btn-success" ng-click="moviesmappingCtrl.saveEditMapping(mapping)">Save Edit</button></td>
+        </tr>
+      </table>
+        <table border="2">
+          <tr><td>TheatreName</td><td>PlaceName</td><td>CityName</td><td>MovieName</td><td>Date</td><td>ShowTime</td><td>GoldClassPrice</td><td>SilverClassPrice</td><td>Save Price</td></tr>
+          <tr ng-repeat="seatBooking in moviesmappingCtrl.seatBookings">
+            <td>{{seatBooking.TheatreName}}</td><td>{{seatBooking.PlaceName}}</td><td>{{seatBooking.CityName}}</td>
+            <td>{{seatBooking.MovieName}}</td><td>{{seatBooking.Date}}</td><td>{{seatBooking.ShowTime}}</td>
+            <td><input type="number" ng-model="moviesmappingCtrl.goldClassPrice" placeholder="Rupees"/>{{seatBooking.GoldClassPrice}}</td>
+            <td><input type="number" ng-model="moviesmappingCtrl.silverClassPrice" placeholder="Rupees"/>{{seatBooking.SilverClassPrice}}</td>
+            <td><button class="btn btn-primary" ng-click="moviesmappingCtrl.fixPrice(seatBooking)">Fix Price</button></td>
+          </tr>
+        </table>
+
+
+
+    </div>
+  </body>

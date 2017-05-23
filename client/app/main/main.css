@@ -1,0 +1,82 @@
+.thing-form {
+  margin: 20px 0;
+}
+
+#banner {
+  border-bottom: none;
+  margin-top: -20px;
+}
+
+#banner h1 {
+  font-size: 60px;
+  line-height: 1;
+  letter-spacing: -1px;
+}
+
+#mymovies{
+  width:500px;
+  height:150px;
+  overflow: hidden;
+}
+
+.carousel-inner{
+  height:100%;
+  width:100%;
+}
+
+.container-fluid {
+padding-left:0px;
+padding-right:0px;
+overflow: hidden;
+
+}
+.navbar-text {
+  margin-left: 15px;
+}
+
+.logo{
+  width:75px;
+  height:50px;
+}
+table{
+  float:left;
+}
+h2{
+  color:#990033;
+}
+.heart{
+  font-size: 18px;
+}
+h4{
+  color:#990033;
+}
+table img{
+  width:220px;
+  height:180px;
+  border-radius: 2%;
+}
+.movie{
+  margin-top: 50px;
+  margin-left: 30px;
+}
+.movie td
+{
+  width: 250px;
+  font-size: 12px;
+  color:#990033;
+  margin-left: 1px;
+}
+
+.fa-heart{
+  color:red;
+}
+
+
+.book{
+  background-color: #ff0066;
+  border-radius: 3%;
+}
+
+.review{
+  background-color: #ff0066;
+}

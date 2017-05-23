@@ -1,0 +1,30 @@
+<div class="navbar navbar-default navbar-fixed-top" ng-controller="NavbarController">
+  <div class="container">
+    <div class="navbar-header">
+       <button class="navbar-toggle" type="button" ng-click="nav.isCollapsed = !nav.isCollapsed">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="/" style="color:white" class="navbar-brand">Namma Cinema Tickets</a>
+    </div>
+    <div uib-collapse="nav.isCollapsed" class="navbar-collapse collapse" id="navbar-main">
+      <ul class="nav navbar-nav">
+        <li ng-repeat="item in nav.menu" ng-class="{active: nav.isActive(item.link)}">
+            <a style="color:white" ng-href="{{item.link}}">{{item.title}}<i class="fa fa-home"></i></a>
+        </li>
+        <li ng-show="nav.isAdmin()" ng-class="{active: nav.isActive('/admin')}"><a style="color:white" href="/admin">Admin</a></li>
+      </ul>
+
+      <ul class="nav navbar-nav navbar-right">
+        <li ng-hide="nav.isLoggedIn()" ng-class="{active: nav.isActive('/rating')}"><a style="color:white" href="/rating">Movie Ratings<i class="fa fa-heart"></i></a></li>
+        <li ng-hide="nav.isLoggedIn()" ng-class="{active: nav.isActive('/signup')}"><a style="color:white" href="/signup">Sign up<i class="fa fa-edit"></i></a></li>
+        <li ng-hide="nav.isLoggedIn()" ng-class="{active: nav.isActive('/login')}"><a style="color:white" href="/login">Login<i class="fa fa-desktop"></i></a></li>
+        <li ng-show="nav.isLoggedIn()"><p style="color:white" class="navbar-text">Hello {{ nav.getCurrentUser().name }}</p> </li>
+        <li ng-show="nav.isLoggedIn()" ng-class="{active: nav.isActive('/settings')}"><a href="/settings"><span class="glyphicon glyphicon-cog"></span></a></li>
+        <li ng-show="nav.isLoggedIn()"><a style="color:white" href="/logout">Logout</a></li>
+      </ul>
+    </div>
+  </div>
+</div>

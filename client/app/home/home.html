@@ -1,0 +1,43 @@
+<div class="container">
+  <div  class="row">
+    <div class="col-md-6">
+      <a href="movies.html">Movies</a>
+      <table class="table">
+        <tr>
+          <td>Movie Poster</td>
+          <td>Details</td>
+        </tr>
+        <tr ng-repeat="m in homeCtrl.movie">
+          <td><img src="{{m.Poster}}" height="50%" width="50%"/></td>
+          <td><ul><li>{{m.Name}}</li>
+          <li>{{m.Year}}</li>
+          <li>{{m.Genre}}</li>
+          <li><button class="btn btn-danger" ng-click="homeCtrl.BookMovie(m)">Book Now</button></li></ul></td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="col-md-12">
+      <a href="theatres.html">Theatres</a>
+      <select>
+        <option ng-model="homeCtrl.City" ng-repeat="x in homeCtrl.theatres">{{x.City}}</option>
+      </select>
+        <button style="margin-left:10px;" class="btn btn-success glyphicon glyphicon-search" ng-click="homeCtrl.GetTheatre(homeCtrl.theatres)"/>
+        <button ng-click="homeCtrl.Ge()"/>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Theatre Name</th>
+            <th>Place Name</th>
+            <th>City</th>
+          </tr>
+          <tr ng-repeat="t in homeCtrl.theatres">
+            <td>{{t.TheatreName}}</td>
+            <td>{{t.PlaceName}}</td>
+            <td>{{t.City}}</td>
+          </tr>
+        </thead>
+      </table>
+    </div>
+  </div>
+</div>

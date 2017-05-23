@@ -1,0 +1,52 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-3">
+      <h4>Search For Movie Details From OMDB API</h4>
+      <input type="text" placeholder="Movie Title" ng-model="moviesCtrl.Title"/><hr/>
+      <input type="text" placeholder="Movie Year" ng-model="moviesCtrl.Year"/><hr/>
+      <input type="text" placeholder="Movie Language" ng-model="moviesCtrl.Language"/>
+      <button style="margin-left:10px;" class="btn btn-success glyphicon glyphicon-search" ng-click="moviesCtrl.SearchOMDB(moviesCtrl.Title,moviesCtrl.Year,moviesCtrl.Language)"/>
+    </div>
+    <div class="col-md-9">
+      <table class="table">
+        <tr>
+          <td>Movie Poster</td>
+          <td>Movie Name</td>
+          <td>Year</td>
+          <td>Genre</td>
+          <td>Add Movie</td>
+        </tr>
+        <tr>
+          <td><img src="{{moviesCtrl.OMDBData.Poster}}" height="50%" width="50%"/></td>
+          <td>{{moviesCtrl.OMDBData.Title}}</td>
+          <td>{{moviesCtrl.OMDBData.Year}}</td>
+          <td>{{moviesCtrl.OMDBData.Genre}}</td>
+          <td><button class="btn btn-success" ng-click="moviesCtrl.AddMovie(moviesCtrl.OMDBData)">Add movie</button></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <div class="row" style="margin-top:20px;">
+    <div class="col-md-12">
+      <div class="form-group">
+        <hr/><h4 align="center">Movies In Namma Cinema Database</h4>
+      <table class="table">
+        <tr>
+          <td>Movie Poster</td>
+          <td>Movie Name</td>
+          <td>Year</td>
+          <td>Genre</td>
+          <td>Remove Movie</td>
+        </tr>
+        <tr ng-repeat="m in moviesCtrl.movie">
+          <td><img src="{{m.Poster}}" height="50%" width="50%"/></td>
+          <td>{{m.Name}}</td>
+          <td>{{m.Year}}</td>
+          <td>{{m.Genre}}</td>
+          <td><button class="btn btn-danger glyphicon glyphicon-trash" ng-click="moviesCtrl.RemoveMovie(m)"></button></td>
+        </tr>
+      </table>
+    </div>
+    </div>
+  </div>
+</div>
