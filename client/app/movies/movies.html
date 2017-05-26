@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-md-3">
       <h4>Search For Movie Details From OMDB API</h4>
-      <input type="text" placeholder="Movie Title" ng-model="moviesCtrl.Title"/><hr/>
+      <input type="text" placeholder="Movie Title" ng-model="moviesCtrl.Title" required="required"/><hr/>
       <input type="text" placeholder="Movie Year" ng-model="moviesCtrl.Year"/><hr/>
       <input type="text" placeholder="Movie Language" ng-model="moviesCtrl.Language"/>
       <button style="margin-left:10px;" class="btn btn-success glyphicon glyphicon-search" ng-click="moviesCtrl.SearchOMDB(moviesCtrl.Title,moviesCtrl.Year,moviesCtrl.Language)"/>

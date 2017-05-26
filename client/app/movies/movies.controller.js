@@ -50,7 +50,13 @@ SearchOMDB(title,year,language)
 
     RemoveMovie(movie)
     {
-      this.$http.delete('/api/moviesendpoints/'+movie._id);
+      if(confirm("Press OK to Delete "+movie.Name+" from the AppDB or hit Cancel to stop deleting.."))
+      {
+        this.$http.delete('/api/moviesendpoints/'+movie._id);
+        alert(movie.Name+" Deleted");
+      }
+      else
+        alert(movie.Name+" not Deleted");
     }
 }
 

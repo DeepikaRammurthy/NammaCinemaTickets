@@ -25,6 +25,9 @@
             </div>
           </div>
         </div>
+
+        <p class="ttip glyphicon glyphicon-info-sign" data-toggle="popover" data-placement="bottom" data-original-title="Theatre Design for visual effects only."
+          data-content="Happy Booking!">Click Me</p>
       <table class="{{seatbookingCtrl.GoldClassSelection}}"><caption><h5>Gold</h5></caption>
         <tr>
           <td></td>
@@ -32,7 +35,8 @@
         </tr>
         <tr ng-repeat="row in seatbookingCtrl.seatBookings[0].GoldClassSeats">
           <td>{{row.Row}}</td>
-          <td ng-repeat="seat in row.SeatsInRow"><div ng-click="seatbookingCtrl.bookSeat(seat)" class="{{seat.Class}}" id={{seat.Seat}}><img class="sofa" src="assets/images/sofa.jpg" alt="sofa image not available"></img></div></td>
+          <td ng-repeat="seat in row.SeatsInRow"><div ng-click="seatbookingCtrl.bookSeat(seat)" class="{{seat.Class}}" id={{seat.Seat}} data-original-title="{{seat.Seat}}" rel="tooltip">
+            <img class="sofa" src="assets/images/sofa.jpg" alt="sofa image not available"></img></div></td>
           <td>{{row.Row}}</td>
         </tr>
       </table>
@@ -44,12 +48,13 @@
         </tr>
         <tr ng-repeat="row in seatbookingCtrl.seatBookings[0].SilverClassSeats">
           <td>{{row.Row}}</td>
-          <td ng-repeat="seat in row.SeatsInRow"><div ng-click="seatbookingCtrl.bookSeat(seat)" class="{{seat.Class}}" id={{seat.Seat}}><img class="chair" src="assets/images/chair.jpg" alt="sofa image not available"></img></div></td>
+          <td ng-repeat="seat in row.SeatsInRow"><div ng-click="seatbookingCtrl.bookSeat(seat)" class="{{seat.Class}}" id={{seat.Seat}}>
+            <img class="chair" src="assets/images/chair.jpg" alt="sofa image not available"></img></div></td>
           <td>{{row.Row}}</td>
         </tr>
       </table>
 
-      <div class="screenmsg"><h5> Screen Towards This Side </h5></div>
+      <div class="screenmsg"><h5>Screen Towards This Side.</h5></div>
       <div><img class="screen" src="assets/images/screen.png" alt="screen image not available"></img></div>
     </div>
     <div class="col-md-1"></div>

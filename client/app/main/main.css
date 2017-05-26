@@ -1,45 +1,65 @@
-.thing-form {
-  margin: 20px 0;
+.header{
+  position: static;
+  min-width: 1200px;
 }
-
-#banner {
-  border-bottom: none;
-  margin-top: -20px;
+.title{
+  max-width: 800px;
+  margin-left: 10px;
+  position: static;
 }
-
-#banner h1 {
-  font-size: 60px;
-  line-height: 1;
-  letter-spacing: -1px;
-}
-
 #mymovies{
-  width:500px;
-  height:150px;
+  margin-top: -10px;
+  width:650px;
+  height:170px;
   overflow: hidden;
+  position: static;
+  max-width: 1500px;
+  border-radius: 2%;
+}
+.carousel-caption p{
+  color:white;
+}
+.carousel-control.left,
+.carousel-control.right {
+    background-image: none
+}
+.carousel-indicators{
+  margin-bottom: -10px;
+}
+#img1{
+  width:700px;
+  height:200px;
 }
 
-.carousel-inner{
-  height:100%;
-  width:100%;
+#img2{
+  width:700px;
+  height:200px;
 }
 
-.container-fluid {
-padding-left:0px;
-padding-right:0px;
-overflow: hidden;
+#img3{
+  width:700px;
+  height:200px;
+}
 
+#img4{
+  width:700px;
+  height:200px;
 }
 .navbar-text {
   margin-left: 15px;
 }
 
+#header{
+  position: static;
+}
 .logo{
-  width:75px;
-  height:50px;
+  position: static;
+  width:85px;
+  height:60px;
 }
 table{
   float:left;
+  margin-right: 20px;
 }
 h2{
   color:#990033;
@@ -47,7 +67,7 @@ h2{
 .heart{
   font-size: 18px;
 }
-h4{
+p{
   color:#990033;
 }
 table img{
@@ -57,26 +77,29 @@ table img{
 }
 .movie{
   margin-top: 50px;
-  margin-left: 30px;
+  margin-left: 0px;
 }
 .movie td
 {
-  width: 250px;
+  width: 270px;
   font-size: 12px;
   color:#990033;
   margin-left: 1px;
 }
 
 .fa-heart{
-  color:red;
+  color:990033;
 }
 
 
 .book{
-  background-color: #ff0066;
+  background-color:#990033;
   border-radius: 3%;
+  color:grey;
 }
 
 .review{
-  background-color: #ff0066;
+  background-color:#990033;
+  border-radius: 3%;
+  color:grey;
 }

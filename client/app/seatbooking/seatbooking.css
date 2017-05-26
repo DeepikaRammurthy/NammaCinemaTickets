@@ -41,7 +41,7 @@
 }
 
 table{
-  /*margin-left: 75px;*/
+  margin-top: 15px;
 }
 td{padding-left:20px;
   padding-top:20px;
@@ -69,6 +69,10 @@ td{padding-left:20px;
   width:16px;
   height:22px;
 }
-h4{
- color:black;
- }
+h5{
+  color:#990033;
+  }
+.ttip{
+  text-align:left;
+  color:blue;
+}

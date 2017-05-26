@@ -17,6 +17,7 @@
       this.selectedTheatreOption;this.reversedTheatreOption;this.mappings=[];this.mappedShowTimes=[];this.theatres=[];
       this.silverClassSeats=[];this.goldClassSeats=[];this.silverClassSeatsDetails=[];this.goldClassSeatsDetails=[];
       this.goldClassSeatsOfScreen=[];this.silverClassSeatsOfScreen=[];this.seatBookings=[];this.goldClassPrice;this.silverClassPrice;
+      this.isOK=true;
     }
 
     $onInit()
@@ -40,6 +41,7 @@
             this.socket.syncUpdates('theatreendpoints',this.theatreDetails);
           });
         }
+
         addSelectedTheatres()
         {
           if(this.selectedTheatreOption!==undefined && this.selectedTheatreOption[0]!==undefined)
@@ -227,7 +229,14 @@
           }
           deleteMapping(mapping)
           {
-            this.$http.delete('/api/moviesmappingendpoints/'+mapping._id);
+
+            if(confirm("Press OK to Delete "+mapping.MovieName+" : "+mapping.TheatreName+" mapping from the AppDB or hit Cancel to stop deleting.."))
+            {
+              this.$http.delete('/api/moviesmappingendpoints/'+mapping._id);
+              alert(mapping.MovieName+" : "+mapping.TheatreName+" mapping Deleted");
+            }
+            else
+              alert(mapping.MovieName+" : "+mapping.TheatreName+" mapping not Deleted");
             this.socket.syncUpdates('moviesmappingendpoint',this.mappings);
           }
 

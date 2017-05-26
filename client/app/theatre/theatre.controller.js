@@ -96,7 +96,14 @@
 
     RemoveTheatre(theatre)
     {
-      this.$http.delete('/api/theatreendpoints/' + theatre._id);
+      if(confirm("Press OK to Delete "+theatre.TheatreName+" from the AppDB or hit Cancel to stop deleting.."))
+      {
+        this.$http.delete('/api/theatreendpoints/' + theatre._id);
+        alert(theatre.TheatreName+" Deleted");
+      }
+      else
+        alert(theatre.TheatreName+" not Deleted");
+    
     }
     EditTheatre(theatre)
     {

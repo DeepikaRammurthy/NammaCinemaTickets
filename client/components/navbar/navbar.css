@@ -1,6 +1,30 @@
 .navbar{
-  background-color:rosybrown;
+  background-color:#b38080;
+  height: 50px;
 }
-a{
-  color:white;
+
+.navbar-responsive-collapse{
+  background-color:#b38080;
+  /*max-width: 1500px;*/
+  min-width: 1200px;
+}
+#movieSearch
+{
+  width:200px;
+}
+#movieTheatre{
+  width:200px;
+}
+#movieCity
+{
+  width:200px;
+}
+
+.menu{
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.menuheart{
+  color:#990033;
 }

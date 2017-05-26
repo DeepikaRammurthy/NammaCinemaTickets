@@ -51,7 +51,7 @@ User.find({}).remove()
     {
       provider: 'local',
       role: 'admin',
-      name: 'Administrator',
+      name: 'Deepika Rammurthy',
       email: 'deepika.ram193@gmail.com',
       password: '9620045193'
     })

@@ -47,7 +47,7 @@
            this.socket.syncUpdates('seatbookendpoint',this.seatBookings);
            console.log(this.seatBookings[0]);
 
-          this.SilverClassSelection="ClassDeselected";
+           this.SilverClassSelection="ClassDeselected";
           // this.GoldClassSelection="ClassDeselected";
            this.classPrice=this.seatBookings[0].SilverClassPrice;
           this.classPrice=this.seatBookings[0].GoldClassPrice;
@@ -66,6 +66,12 @@
                 else
                 $(this).children('.sofa').show();
               });
+
+              $(".ttip").click(function(e){
+                e.preventDefault();
+              });
+              $(".ttip").popover();
+              $('[rel="tooltip"]').tooltip();
            });
 
           });

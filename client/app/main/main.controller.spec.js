@@ -1,4 +1,4 @@
-'use strict';
+i'use strict';
 
 describe('Component: mainComponent', function() {
 

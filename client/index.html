@@ -17,27 +17,45 @@
       <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css({.tmp,client}) app/app.css -->
+      <link rel="stylesheet" href="app/app.css"/>
+      <link rel="stylesheet" href="index.css"/>
+      <link rel="stylesheet" href="app/seatbooking/seatbooking.css"/>
+      <link rel="stylesheet" href="components/angular-ui/build/angular-ui.min.css"/>
+      <link rel="stylesheet" href="app/movies/movies.css"/>
+      <link rel="stylesheet" href="app/theatre/theatre.css"/>
+      <link rel="stylesheet" href="app/moviesmapping/moviesmapping.css"/>
+      <link rel="stylesheet" href="app/main/main.css"/>
+      <link rel="stylesheet" href="components/navbar/navbar.css"/>
+      <link rel="stylesheet" href="components/footer/footer.css">
+      <link rel="stylesheet" href="app/seatbooking/font-awesome.min.css"/>
+      <link rel="stylesheet" href="app/seatbooking/material-icons.css"/>
+      <!-- injector:css -->
+      <link rel="stylesheet" href="app/admin/admin.css">
       <link rel="stylesheet" href="app/app.css">
-      <link rel="stylesheet" href="app/seatbooking/seatbooking.css">
-      <link rel="stylesheet" href="app/movies/movies.css">
-      <link rel="stylesheet" href="app/theatre/theatre.css">
-      <link rel="stylesheet" href="app/moviesmapping/moviesmapping.css">
+      <link rel="stylesheet" href="app/home/home.css">
       <link rel="stylesheet" href="app/main/main.css">
-      <link rel="stylesheet" href="components/navbar/navbar.css">
+      <link rel="stylesheet" href="app/movies/movies.css">
+      <link rel="stylesheet" href="app/moviesmapping/moviesmapping.css">
+      <link rel="stylesheet" href="app/rating/rating.css">
       <link rel="stylesheet" href="app/seatbooking/font-awesome.min.css">
       <link rel="stylesheet" href="app/seatbooking/material-icons.css">
-      <!-- injector:css -->
+      <link rel="stylesheet" href="app/seatbooking/seatbooking.css">
+      <link rel="stylesheet" href="app/theatre/theatre.css">
+      <link rel="stylesheet" href="components/angular-ui/build/angular-ui.css">
+      <link rel="stylesheet" href="components/angular-ui/build/angular-ui.min.css">
+      <link rel="stylesheet" href="components/footer/footer.css">
+      <link rel="stylesheet" href="components/navbar/navbar.css">
       <!-- endinjector -->
     <!-- endbuild -->
   </head>
-  <body ng-app="yeotempApp">
+  <body style="background-color:mistyrose" ng-app="yeotempApp">
     <!--[if lt IE 7]>
       <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
     <!-- Add your site or application content here -->
-    <navbar></navbar><hr/><hr/>
-    <div ng-view=""></div>
+    <navbar></navbar>
+    <div ng-view="" ></div>
     <footer></footer>
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
@@ -67,6 +85,7 @@
       <script src="bower_components/lodash/dist/lodash.compat.js"></script>
       <script src="bower_components/angular-socket-io/socket.js"></script>
       <script src="bower_components/angular-validation-match/dist/angular-validation-match.min.js"></script>
+      <script src="bower_components/angular-filter/dist/angular-filter.js"></script>
       <!-- endbower -->
       <script src="socket.io-client/socket.io.js"></script>
     <!-- endbuild -->

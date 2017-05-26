@@ -8,9 +8,9 @@
 
         <div class="form-group" ng-class="{ 'has-success': form.name.$valid && vm.submitted,
                                             'has-error': form.name.$invalid && vm.submitted }">
-          <label>Name</label>
+          <!-- <label>Name</label> -->
 
-          <input type="text" name="name" class="form-control" ng-model="vm.user.name"
+          <input Placeholder="Name" type="text" name="name" class="form-control" ng-model="vm.user.name"
                  required/>
           <p class="help-block" ng-show="form.name.$error.required && vm.submitted">
             A name is required
@@ -19,9 +19,9 @@
 
         <div class="form-group" ng-class="{ 'has-success': form.email.$valid && vm.submitted,
                                             'has-error': form.email.$invalid && vm.submitted }">
-          <label>Email</label>
+          <!-- <label>Email</label> -->
 
-          <input type="email" name="email" class="form-control" ng-model="vm.user.email"
+          <input Placeholder="Email" type="email" name="email" class="form-control" ng-model="vm.user.email"
                  required
                  mongoose-error/>
           <p class="help-block" ng-show="form.email.$error.email && vm.submitted">
@@ -37,9 +37,9 @@
 
         <div class="form-group" ng-class="{ 'has-success': form.password.$valid && vm.submitted,
                                             'has-error': form.password.$invalid && vm.submitted }">
-          <label>Password</label>
+          <!-- <label>Password</label> -->
 
-          <input type="password" name="password" class="form-control" ng-model="vm.user.password"
+          <input Placeholder="Password" type="password" name="password" class="form-control" ng-model="vm.user.password"
                  ng-minlength="3"
                  required
                  mongoose-error/>
@@ -54,8 +54,8 @@
 
         <div class="form-group" ng-class="{ 'has-success': form.confirmPassword.$valid && vm.submitted,
                                             'has-error': form.confirmPassword.$invalid && vm.submitted }">
-          <label>Confirm Password</label>
-          <input type="password" name="confirmPassword" class="form-control" ng-model="vm.user.confirmPassword"
+          <!-- <label>Confirm Password</label> -->
+          <input Placeholder="Retype Password" type="password" name="confirmPassword" class="form-control" ng-model="vm.user.confirmPassword"
                  match="vm.user.password"
                  ng-minlength="3" required/>
           <p class="help-block"

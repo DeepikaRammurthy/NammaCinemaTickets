@@ -76,7 +76,7 @@
           <tr ng-repeat="t in theatreCtrl.theatres"><td>{{t.TheatreName}}</td><td>{{t.PlaceName}}</td><td>{{t.City}}</td>
             <td><table><tr><td ng-repeat="showtimes in t.ShowTimes"><span class="glyphicon glyphicon-time">{{showtimes.showTime}}</span></td></tr></table></td>
             <td><table><tr>
-              <td><i class="fa fa-bed">SilverClass {{t.SilverClassSeats.FirstRow}}to{{t.SilverClassSeats.LastRow}}{{t.SilverClassSeats.NumberOfSeats}}Seats</i></td>
+              <td><i class="fa fa-">SilverClass {{t.SilverClassSeats.FirstRow}}to{{t.SilverClassSeats.LastRow}}{{t.SilverClassSeats.NumberOfSeats}}Seats</i></td>
               <td><span class="glyphicon glyphicon-time">GoldClass {{t.GoldClassSeats.FirstRow}}to{{t.GoldClassSeats.LastRow}}{{t.GoldClassSeats.NumberOfSeats}}Seats</span></td>
             </tr></table></td>
             <td><button class="btn btn-danger glyphicon glyphicon-trash" ng-click=theatreCtrl.RemoveTheatre(t)></button></td>

@@ -1,30 +1,42 @@
-<div class="navbar navbar-default navbar-fixed-top" ng-controller="NavbarController">
+<div class="navbar navbar-default navbar-static-top" ng-controller="NavbarController">
   <div class="container">
     <div class="navbar-header">
-       <button class="navbar-toggle" type="button" ng-click="nav.isCollapsed = !nav.isCollapsed">
-        <span class="sr-only">Toggle navigation</span>
+       <button class="navbar-toggle" type="button" data-target="*.navbar-responsive-collapse" data-toggle="collapse">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a href="/" style="color:white" class="navbar-brand">Namma Cinema Tickets</a>
+      <a href="/" style="color:#990033" class="navbar-brand">Namma Cinema Tickets</a>
     </div>
-    <div uib-collapse="nav.isCollapsed" class="navbar-collapse collapse" id="navbar-main">
+    <div class="navbar-collapse collapse navbar-responsive-collapse" id="navbar-main">
       <ul class="nav navbar-nav">
-        <li ng-repeat="item in nav.menu" ng-class="{active: nav.isActive(item.link)}">
-            <a style="color:white" ng-href="{{item.link}}">{{item.title}}<i class="fa fa-home"></i></a>
+        <li class="menu nav-item" ng-repeat="item in nav.menu" ng-class="{active: nav.isActive(item.link)}">
+            <a style="color:#990033" ng-href="{{item.link}}">{{item.title}}<i class="fa fa-home"></i></a>
         </li>
-        <li ng-show="nav.isAdmin()" ng-class="{active: nav.isActive('/admin')}"><a style="color:white" href="/admin">Admin</a></li>
+        <li>
+        <form class="navbar-form navbar-left">
+            <input type="text" class="form-control" placeholder="Search this site for Movie" id="movieSearch"></input>
+            <input type="text" class="form-control" placeholder="Search this site for Theatre" id="movieTheatre"></input>
+            <input type="text" class="form-control" placeholder="Search this site for City" id="movieCity"></input>
+            <button type="submit" class="btn btn-default"><span style="color:#990033" class="menu glyphicon glyphicon-search" id="searchbut"></span></button>
+          </form>
+      </li>
       </ul>
 
-      <ul class="nav navbar-nav navbar-right">
-        <li ng-hide="nav.isLoggedIn()" ng-class="{active: nav.isActive('/rating')}"><a style="color:white" href="/rating">Movie Ratings<i class="fa fa-heart"></i></a></li>
-        <li ng-hide="nav.isLoggedIn()" ng-class="{active: nav.isActive('/signup')}"><a style="color:white" href="/signup">Sign up<i class="fa fa-edit"></i></a></li>
-        <li ng-hide="nav.isLoggedIn()" ng-class="{active: nav.isActive('/login')}"><a style="color:white" href="/login">Login<i class="fa fa-desktop"></i></a></li>
-        <li ng-show="nav.isLoggedIn()"><p style="color:white" class="navbar-text">Hello {{ nav.getCurrentUser().name }}</p> </li>
-        <li ng-show="nav.isLoggedIn()" ng-class="{active: nav.isActive('/settings')}"><a href="/settings"><span class="glyphicon glyphicon-cog"></span></a></li>
-        <li ng-show="nav.isLoggedIn()"><a style="color:white" href="/logout">Logout</a></li>
+      <ul class="nav navbar-nav navabar-right">
+        <!-- <li class="menu" ng-hide="nav.isLoggedIn()" ng-class="{active: nav.isActive('/rating')}"><a style="color:#990033" href="/rating">Movie Ratings<i class="menuheart fa fa-heart"></i></a></li> -->
+        <li class="menu" ng-hide="nav.isLoggedIn()" ng-class="{active: nav.isActive('/signup')}"><a style="color:#990033" href="/signup">Register<i class="fa fa-edit"></i></a></li>
+        <li class="menu" ng-hide="nav.isLoggedIn()" ng-class="{active: nav.isActive('/login')}"><a style="color:#990033" href="/login">Login<i class="fa fa-desktop"></i></a></li>
+        <li class="menu dropdown" ng-show="nav.isLoggedIn()"><a class="dropdown-toggle" data-toggle="dropdown" style="color:#990033" class="navbar-text"><span class="menu glyphicon glyphicon-user"></span>Hello, {{ nav.getCurrentUser().name }}<strong class="caret"></strong></a>
+          <ul class="dropdown-menu">
+          <li class="menu drop-down" ng-show="nav.isAdmin()" ng-class="{active: nav.isActive('/admin')}"><a style="color:#990033" href="/admin"><span class="menu glyphicon glyphicon-briefcase"></span>Administrator Controls</a></li>
+          <li class="menu" ng-show="nav.isLoggedIn()" ng-class="{active: nav.isActive('/settings')}"><a style="color:#990033" href="/settings"><span class="glyphicon glyphicon-cog"></span>Profile Settings</a></li>
+          <li class="divider"></li>
+          <li class="dropdown-header">More Services</li>
+          <li class="menu" ng-show="nav.isLoggedIn()"><a style="color:#990033" href="/logout"><span class="glyphicon glyphicon-off"></span>Logout</a></li>
+        </ul>
+        </li>
       </ul>
-    </div>
+      </div>
   </div>
 </div>

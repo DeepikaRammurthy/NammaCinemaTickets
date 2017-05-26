@@ -5,14 +5,15 @@
   <div class="container">
     <div class="row">
       <div class="col-md-6">
-        <select class="form-control" ng-model="moviesmappingCtrl.selectedMovieName" ng-model="moviesmappingCtrl.selectedMovieName">
+        <select class="form-control" ng-model="moviesmappingCtrl.selectedMovieName" ng-model="moviesmappingCtrl.selectedMovieName" placeholder="Select Movie">
           <option ng-repeat="movie in moviesmappingCtrl.movieNames">{{movie.Name}}</option>
         </select>
       </div>
 
       <div class="col-md-6">
-        <select class="form-control" ng-model="moviesmappingCtrl.selectedCityName">
-          <option ng-repeat="city in moviesmappingCtrl.cityNames track by $index">{{city}}</option>
+        <select class="city form-control" ng-model="moviesmappingCtrl.selectedCityName">
+          <!-- <option ng-repeat="city in moviesmappingCtrl.cityNames track by $index">{{city}}</option> -->
+          <option ng-repeat="city in moviesmappingCtrl.cityNames | unique:City">{{city}}</option>
         </select>
       </div>
     </div>
@@ -20,7 +21,7 @@
     <div class="row">
       <div class="col-md-5"> All Theatres Names
         <select multiple="multiple" size="6" class="form-control" ng-model="moviesmappingCtrl.selectedTheatreOption">
-          <option ng-repeat="theatres in moviesmappingCtrl.theatreDetails">{{theatres.TheatreName}}:{{theatres.PlaceName}}</option>
+          <option ng-repeat="theatres in moviesmappingCtrl.theatreDetails | filter:{City:moviesmappingCtrl.selectedCityName}">{{theatres.TheatreName}}:{{theatres.PlaceName}}</option>
         </select>
       </div>
       <div class="col-md-2"></br>
