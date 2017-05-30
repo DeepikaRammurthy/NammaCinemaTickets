@@ -1,5 +1,8 @@
 .trash { color:rgb(209, 91, 71); }
-
+h3{
+	color:#990033;
+}
+strong{color:#990033;}
 .user-list li {
 	display: flex;
 	border: none;

@@ -14,12 +14,12 @@
             <a style="color:#990033" ng-href="{{item.link}}">{{item.title}}<i class="fa fa-home"></i></a>
         </li>
         <li>
-        <form class="navbar-form navbar-left">
-            <input type="text" class="form-control" placeholder="Search this site for Movie" id="movieSearch"></input>
-            <input type="text" class="form-control" placeholder="Search this site for Theatre" id="movieTheatre"></input>
-            <input type="text" class="form-control" placeholder="Search this site for City" id="movieCity"></input>
-            <button type="submit" class="btn btn-default"><span style="color:#990033" class="menu glyphicon glyphicon-search" id="searchbut"></span></button>
-          </form>
+          <form class="navbar-form navbar-left">
+              <input type="text" class="form-control" placeholder="Search this site for Movie" ng-model="nav.movieName" id="movieSearch"></input>
+              <input type="text" class="form-control" placeholder="Search this site for Theatre" ng-model="nav.theatreName" id="movieTheatre"></input>
+              <input type="text" class="form-control" placeholder="Search this site for City" ng-model="nav.cityName" id="movieCity"></input>
+              <button type="submit" class="btn btn-default"><span style="color:#990033" class="menu glyphicon glyphicon-search" id="searchbut" ng-click="nav.search()"></span></button>
+            </form>
       </li>
       </ul>
 
@@ -27,12 +27,18 @@
         <!-- <li class="menu" ng-hide="nav.isLoggedIn()" ng-class="{active: nav.isActive('/rating')}"><a style="color:#990033" href="/rating">Movie Ratings<i class="menuheart fa fa-heart"></i></a></li> -->
         <li class="menu" ng-hide="nav.isLoggedIn()" ng-class="{active: nav.isActive('/signup')}"><a style="color:#990033" href="/signup">Register<i class="fa fa-edit"></i></a></li>
         <li class="menu" ng-hide="nav.isLoggedIn()" ng-class="{active: nav.isActive('/login')}"><a style="color:#990033" href="/login">Login<i class="fa fa-desktop"></i></a></li>
-        <li class="menu dropdown" ng-show="nav.isLoggedIn()"><a class="dropdown-toggle" data-toggle="dropdown" style="color:#990033" class="navbar-text"><span class="menu glyphicon glyphicon-user"></span>Hello, {{ nav.getCurrentUser().name }}<strong class="caret"></strong></a>
+        <li class="menu dropdown" ng-show="nav.isLoggedIn()"><a class="dropdown-toggle" data-toggle="dropdown" style="color:#990033" class="navbar-text"><span class="menu glyphicon glyphicon-user"></span> Hello, {{ nav.getCurrentUser().name }}<strong class="caret"></strong></a>
           <ul class="dropdown-menu">
-          <li class="menu drop-down" ng-show="nav.isAdmin()" ng-class="{active: nav.isActive('/admin')}"><a style="color:#990033" href="/admin"><span class="menu glyphicon glyphicon-briefcase"></span>Administrator Controls</a></li>
-          <li class="menu" ng-show="nav.isLoggedIn()" ng-class="{active: nav.isActive('/settings')}"><a style="color:#990033" href="/settings"><span class="glyphicon glyphicon-cog"></span>Profile Settings</a></li>
+            <li class="dropdown-header"><span class="menu glyphicon glyphicon-briefcase"></span> Administrator Operations</li>
+            <li class="menu"><a style="color:#990033" href="/movies">Movies</a></li>
+            <li class="menu"><a style="color:#990033" href="/theatre">Theatres</a></li>
+            <li class="menu"><a style="color:#990033" href="/moviesmapping">Movie Theatre Mappings</a></li>
+            <li class="menu"><a style="color:#990033" href="/seatbooking">Book Show</a></li>
+            <li class="divider"></li>
+            <li class="dropdown-header"><i class="fa fa-wrench"></i> More Services</li>
+            <li class="menu drop-down" ng-show="nav.isAdmin()" ng-class="{active: nav.isActive('/admin')}"><a style="color:#990033" href="/admin"><i class="fa fa-user-times"></i> User Controls</a></li>
+              <li class="menu" ng-show="nav.isLoggedIn()" ng-class="{active: nav.isActive('/settings')}"><a style="color:#990033" href="/settings"><span class="glyphicon glyphicon-cog"></span> Profile Settings</a></li>
           <li class="divider"></li>
-          <li class="dropdown-header">More Services</li>
           <li class="menu" ng-show="nav.isLoggedIn()"><a style="color:#990033" href="/logout"><span class="glyphicon glyphicon-off"></span>Logout</a></li>
         </ul>
         </li>

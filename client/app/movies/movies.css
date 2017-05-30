@@ -1,3 +1,15 @@
-inputt{
-  background-color:mistyrose;
+.moviesearch
+{
+  margin-left:10px;
+  margin-bottom: 2px;
+}
+
+.moviesindb
+{
+  margin-top:20px;
+}
+#Poster
+{
+  height:50%;
+  width:50%;
 }

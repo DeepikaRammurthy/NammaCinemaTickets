@@ -1,13 +1,16 @@
-.header{
+.header
+{
   position: static;
   min-width: 1200px;
 }
-.title{
+.title
+{
   max-width: 800px;
   margin-left: 10px;
   position: static;
 }
-#mymovies{
+#mymovies
+{
   margin-top: -10px;
   width:650px;
   height:170px;
@@ -16,66 +19,81 @@
   max-width: 1500px;
   border-radius: 2%;
 }
-.carousel-caption p{
+.carousel-caption p
+{
   color:white;
 }
 .carousel-control.left,
-.carousel-control.right {
+.carousel-control.right
+{
     background-image: none
 }
-.carousel-indicators{
+.carousel-indicators
+{
   margin-bottom: -10px;
 }
-#img1{
+#img1
+{
   width:700px;
   height:200px;
 }
 
-#img2{
+#img2
+{
   width:700px;
   height:200px;
 }
 
-#img3{
+#img3
+{
   width:700px;
   height:200px;
 }
 
-#img4{
+#img4
+{
   width:700px;
   height:200px;
 }
-.navbar-text {
+.navbar-text
+{
   margin-left: 15px;
 }
 
-#header{
+#header
+{
   position: static;
 }
-.logo{
+.logo
+{
   position: static;
   width:85px;
   height:60px;
 }
-table{
+table
+{
   float:left;
   margin-right: 20px;
 }
-h2{
+h2
+{
   color:#990033;
 }
-.heart{
+.heart
+{
   font-size: 18px;
 }
 p{
   color:#990033;
 }
-table img{
+table img
+{
   width:220px;
   height:180px;
   border-radius: 2%;
 }
-.movie{
+.movie
+{
   margin-top: 50px;
   margin-left: 0px;
 }
@@ -86,19 +104,26 @@ table img{
   color:#990033;
   margin-left: 1px;
 }
-
-.fa-heart{
+.fa-heart
+{
   color:990033;
 }
-
-
-.book{
+.book
+{
   background-color:#990033;
   border-radius: 3%;
   color:grey;
 }
-
-.review{
+.bookseats
+{
+  background-color:#990033;
+  border-radius: 3%;
+  color:grey;
+  width:300px;
+  height: 50px;
+}
+.review
+{
   background-color:#990033;
   border-radius: 3%;
   color:grey;

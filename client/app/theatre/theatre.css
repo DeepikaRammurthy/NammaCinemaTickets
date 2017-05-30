@@ -1,0 +1,45 @@
+#mangetheatres
+{
+  text-align: center;
+  color: #990033;
+}
+.update th
+{
+  color:grey;
+  font-weight: bold;
+  text-align: center;
+}
+.update td
+{
+  color:grey;
+  font-weight: lighter;
+  text-align:center;
+}
+.updatetime th
+{
+  color:grey;
+  font-weight: bold;
+  text-align: center;
+}
+.updatetime td
+{
+  color:grey;
+  font-weight: lighter;
+  text-align:center;
+}
+.delete th
+{
+  color:grey;
+  font-weight: bold;
+  text-align: center;
+}
+.delete td
+{
+  color:grey;
+  font-weight: lighter;
+  text-align:center;
+}
+.theatremenu a
+{
+  color:grey;
+}

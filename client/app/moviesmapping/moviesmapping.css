@@ -1,3 +1,52 @@
-.city option{
+.city option
+{
   display: list-item;
+}
+.save
+{
+  margin-top: 20px;
+}
+.mapmenu
+{
+  text-align: justify;
+  font-weight: 500;
+}
+#buttons
+{
+  margin-top:20px;
+}
+#mapdetails
+{
+  margin-top: 20px;
+}
+.timestomap
+{
+padding: 0px;
+border-style: ridge;
+background-color: white;
+border-color: black;
+border-width: thin;
+}
+.priceinput
+{
+visibility: hidden;
+}
+.priceinputvisible
+{
+  visibility: visible;
+}
+.showDates
+{
+  border-style: ridge;
+  background-color: white;
+}
+.uncheck
+{
+    font-size: 15px;
+    visibility: hidden;
+}
+.check
+{
+  visibility: visible;
+  color:lightgreen;
 }

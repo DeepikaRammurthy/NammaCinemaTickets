@@ -1,4 +1,5 @@
-.seat{
+.seat
+{
   color:black;
   width:20px;
   height:20px;
@@ -7,8 +8,8 @@
   background-color: mistyrose;
   padding:1px;
 }
-
-.seatBooked{
+.seatBooked
+{
   color:black;
   width:20px;
   height:20px;
@@ -18,12 +19,10 @@
   padding:1px;
   pointer-events: none;
 }
-
 .seatBooked img{
   display:none;
   background-color: mistyrose;
 }
-
 .ClassDeselected div
 {
   color:black;
@@ -35,44 +34,52 @@
   padding:1px;
   pointer-events: none;
 }
-
 .ClassDeselected div img{
   display:none;
 }
-
-table{
+table
+{
   margin-top: 15px;
 }
-td{padding-left:20px;
+td
+{
+  padding-left:20px;
   padding-top:20px;
-   font-size: 10px;
+  font-size: 10px;
 }
-.green{
+.green
+{
   background-color: lightgreen;
 }
-.screen{
+.screen
+{
   width:650px;
-  /*margin-left: 50px;*/
 }
-.barcode{
+.barcode
+{
   height:50px;
   width:50px;
 }
-.screenmsg{
+.screenmsg
+{
   margin-left: 250px;
 }
-.chair{
+.chair
+{
   width:20px;
   height:20px;
 }
-.sofa{
+.sofa
+{
   width:16px;
   height:22px;
 }
-h5{
+h5
+{
   color:#990033;
-  }
-.ttip{
+}
+.ttip
+{
   text-align:left;
   color:blue;
 }

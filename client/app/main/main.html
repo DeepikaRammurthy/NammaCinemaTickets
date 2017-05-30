@@ -1,82 +1,130 @@
   <body>
-    <div class="container">
+  <div class="container">
+    <!--Modal To Provide Bookings Details-->
+    <div id="mybook" class="modal fade" role="dialog">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Select Theatre, Date And ShowTime</h4>
+          </div>
+          <div class="modal-body">
+            Check Theatres<hr/>
+              <select type="text" ng-model="homeCtrl.theatreToBookFinal">
+                <option ng-repeat="theatreToBook in homeCtrl.theatresToBookFinal | unique:TheareName">{{theatreToBook}}</option>
+              </select>
+              <hr/><button class="btn btn-default" ng-click="homeCtrl.bookDate()">Check Dates</button>
+              <div ng-show="homeCtrl.theatreBooked">
+                <select type="text" ng-model="homeCtrl.dateToBookFinal">
+                  <option ng-repeat="dateToBook in homeCtrl.datesToBookFinal | unique:Date">{{dateToBook}}</option>
+                </select>
+              </div>
+
+              <hr/><button class="btn btn-default" ng-click="homeCtrl.bookTime()">Check Times</button>
+              <div ng-show="homeCtrl.dateBooked">
+                <select type="text" ng-model="homeCtrl.timeToBookFinal">
+                  <option ng-repeat="timeToBook in homeCtrl.timesToBookFinal | unique:ShowTime">{{timeToBook}}</option>
+                </select>
+              </div>
+
+              <hr/><button class="btn btn-default" ng-click="homeCtrl.bookClass()">Check Class</button>
+              <div ng-show="homeCtrl.timeBooked">
+                <select type="text" ng-model="homeCtrl.classToBookFinal">
+                  <option ng-repeat="classToBook in homeCtrl.classesToBookFinal">{{classToBook}}</option>
+                </select>
+              </div>
+
+              <!-- <div ng-show="homeCtrl.classBooked"> -->
+              <hr/><button class="btn btn-default" ng-click="homeCtrl.showSeatsSelection()">Submit</button>
+
+                <!-- <a href="#" ng-click="homeCtrl.screen()">Click Here To Save The Selections For Seating.</a> -->
+              <!-- </div> -->
+
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--Home Page Header Details-->
     <div class="row">
       <div class="header">
-      <div class="col-md-1">
-        <img class="logo" src="assets/images/logo.jpg" alt="logo"/>
-      </div>
-      <div class="col-md-4">
-        <div class="title">
-        <h2>Namma, Cinema Tickets</h2>
-        <p class="lead">Book Your show Anytime, Anywhere !</p>
-      </div>
-      </div>
-      <div class="col-md-7">
-      <div class="container" id="mymoviesrow">
-      <div class="row">
-        <div id="mymovies" class="movies slide" data-ride="carousel">
-      <!-- Indicators -->
-      <ol class="carousel-indicators">
-        <li data-target="#mymovies" data-slide-to="0" class="active"></li>
-        <li data-target="#mymovies" data-slide-to="1"></li>
-        <li data-target="#mymovies" data-slide-to="2"></li>
-        <li data-target="#mymovies" data-slide-to="3"></li>
-      </ol>
+        <div class="col-md-1">
+          <img class="logo" src="assets/images/logo.jpg" alt="logo"/>
+        </div>
+        <div class="col-md-4">
+          <div class="title">
+            <h2>Namma, Cinema Tickets</h2>
+            <p class="lead">Book Your show Anytime, Anywhere !</p>
+          </div>
+          <button class="bookseats" ng-show="homeCtrl.enable" ><i class="fa fa-group"/><a href="/seatbooking">Select Seats</a></button>
+        </div>
+        <div class="col-md-7">
+          <div class="container" id="mymoviesrow">
+            <div class="row">
+              <div id="mymovies" class="movies slide" data-ride="carousel">
+                <!-- Indicators -->
+                <ol class="carousel-indicators">
+                  <li data-target="#mymovies" data-slide-to="0" class="active"></li>
+                  <li data-target="#mymovies" data-slide-to="1"></li>
+                  <li data-target="#mymovies" data-slide-to="2"></li>
+                  <li data-target="#mymovies" data-slide-to="3"></li>
+                </ol>
 
-      <!-- Wrapper for slides -->
-      <div class="carousel-inner" role="listbox">
+                <!-- Wrapper for slides -->
+                <div class="carousel-inner" role="listbox">
+                  <div class="item active">
+                    <img id="img1" src="assets/images/bb2.jpg" alt="bahubali2"/>
+                      <div class="carousel-caption">
+                        <h3>BahuBali 2</h3>
+                        <p>The Conclusion.</p>
+                      </div>
+                  </div>
 
-        <div class="item active">
-          <img id="img1" src="assets/images/bb2.jpg" alt="bahubali2"/>
-          <div class="carousel-caption">
-            <h3>BahuBali 2</h3>
-            <p>The Conclusion.</p>
+                  <div class="item">
+                    <img id="img2" src="assets/images/kp.jpg" alt="kirik party">
+                    <div class="carousel-caption">
+                      <h3>Kirik Party</h3>
+                      <p>Sir, Thirboki Jeevana Nammadalla...</p>
+                    </div>
+                  </div>
+
+                  <div class="item">
+                    <img id="img3" src="assets/images/s3.jpg" alt="sarkar3">
+                    <div class="carousel-caption">
+                      <h3>Sarkar 3</h3>
+                      <p>Indian political crime thriller film.</p>
+                    </div>
+                  </div>
+
+                  <div class="item">
+                    <img id="img4" src="assets/images/gg2.jpg" alt="gg2">
+                    <div class="carousel-caption">
+                      <h3>Guardians Of Galaxy</h3>
+                      <p>American superhero film based on the Marvel Comics.</p>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Left and right controls -->
+                <a class="left carousel-control" href="#mymovies" role="button" data-slide="prev">
+                  <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                  <span class="sr-only">Previous</span>
+                </a>
+                <a class="right carousel-control" href="#mymovies" role="button" data-slide="next">
+                  <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                  <span class="sr-only">Next</span>
+                </a>
+              </div>
+            </div>
           </div>
         </div>
-
-        <div class="item">
-          <img id="img2" src="assets/images/kp.jpg" alt="kirik party">
-          <div class="carousel-caption">
-            <h3>Kirik Party</h3>
-            <p>Sir, Thirboki Jeevana Nammadalla...</p>
-          </div>
-        </div>
-
-        <div class="item">
-          <img id="img3" src="assets/images/s3.jpg" alt="sarkar3">
-          <div class="carousel-caption">
-            <h3>Sarkar 3</h3>
-            <p>Indian political crime thriller film.</p>
-          </div>
-        </div>
-
-        <div class="item">
-          <img id="img4" src="assets/images/gg2.jpg" alt="gg2">
-          <div class="carousel-caption">
-            <h3>Guardians Of Galaxy</h3>
-            <p>American superhero film based on the Marvel Comics.</p>
-          </div>
-        </div>
       </div>
+    </div>
 
-      <!-- Left and right controls -->
-      <a class="left carousel-control" href="#mymovies" role="button" data-slide="prev">
-        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-        <span class="sr-only">Previous</span>
-      </a>
-      <a class="right carousel-control" href="#mymovies" role="button" data-slide="next">
-        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-        <span class="sr-only">Next</span>
-      </a>
-    </div>
-    </div>
-    </div>
-    </div>
-  </div>
-  </div>
-</div>
-
-  <div class="container">
+    <!--Home Page Body Content Details-->
     <div class="row">
       <div class="col-md-12">
         <div class="container">
@@ -97,15 +145,48 @@
                       <tr><th>Movie Name: </th><td>{{movi.Name}}</td></tr>
                       <tr><th>Release Year: </th><td>{{movi.Year}}</td></tr>
                       <tr><th>Genre: </th><td>{{movi.Genre}}</td></tr>
-                      <tr><td><button class="book" ng-click="homeCtrl.bookMovie(m)"><i class="fa fa-book">Book Now</i></button></td>
-                      <td><button class="review" ng-click="homeCtrl.reviewMovie(m)"><i class="fa fa-comments">Reviews</i></button></td></tr>
-                </table></td>
+                      <tr><td><button class="book" ng-click="homeCtrl.bookMovie(movi)"
+                        data-toggle="modal" data-target="#mybook"><i class="fa fa-book">Book Now</i></button>
+                          </td>
+                          <td><button class="review" ng-click="homeCtrl.reviewMovie(m)"
+                            data-toggle="modal" data-target="#moviesReviews"><i class="fa fa-comments">Reviews</i></button></td></tr>
+                    </table></td>
                 </tr>
               </table>
             </div>
           </div>
         </div>
+      </div>
+    </div>
+
+    <!--Modal Dialog Containing Movie Reviews and Ratings-->
+    <div id="moviesReviews" class="modal fade" role="dialog">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">{{homeCtrl.ReviewsOfMovie}} Reviews and Ratings</h4>
+            </div>
+            <div class="modal-body">
+              <div ng-repeat="reviews in homeCtrl.ReviewsOfMovie.MovieReviews">
+                <div class="well">
+                  {{reviews}}
+                </div>
+              </div>
+              <div class="inputreview">
+                <textarea rows="4" cols="50">
+                </textarea>
+              </div>
+              <div class="rate">
+                <!-- rating input-->
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button class="btn btn-primary">Submit</button>
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+      </div>
+    </div>
   </div>
-  </div>
-  </div>
-  </body>
+</body>

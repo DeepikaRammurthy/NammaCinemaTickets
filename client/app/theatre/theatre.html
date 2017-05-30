@@ -1,88 +1,264 @@
-<body>
-  <div class="container">
-    <div class="row">
-      <div class="col-md-6">
-        <h4>Theatre Details</h4><hr/>
-        <div class="form-group">
-          <input type="text" class="form-control" ng-model="theatreCtrl.TheatreName" placeholder="Theatre Name"></input>
-        </div>
-        <div class="form-group">
-          <input type="text" class="form-control" ng-model="theatreCtrl.PlaceName" placeholder="Place Name"></input>
-        </div>
-        <div class="form-group">
-          <input type="text" class="form-control" ng-model="theatreCtrl.City" placeholder="City"></input>
-        </div>
-        <div class="form-group">
-          <input type="time" class="form-control" id="showTime" ng-model="theatreCtrl.showTime" placeholder="Show Time"></input><br/>
-          <button id="addShowTimes" class=" form-control btn btn-primary" ng-click="theatreCtrl.addTimes()">Add Show Times</button></div>
-          <hr/><div class="well">Show Timings</span>
-            <button class="btn btn-danger glyphicon glyphicon-remove" ng-click=theatreCtrl.removeTime(shwTime) ng-repeat="shwTime in theatreCtrl.showTimes">{{shwTime.showTime}}</button>
+  <body>
+    <div class="container">
+      <ul class="nav nav-tabs">
+        <li class="active theatremenu"><a data-toggle="tab" href="#addtheatre">Add Theatre</a></li>
+        <li class="theatremenu"><a data-toggle="tab" href="#managetheatre">Edit Theatres Details And Capacity</a></li>
+        <li class="theatremenu"><a data-toggle="tab" href="#managetheatreShowtimes">Edit Theatres ShowTimes</a></li>
+        <li class="theatremenu"><a data-toggle="tab" href="#deletetheatre">Delete Theatres</a></li>
+        <li class="theatremenu"><a data-toggle="tab" href="#viewtheatre">View Theatres</a></li>
+      </ul>
+    <div class="tab-content">
+      <!--Add Teatres-->
+      <div id="#addtheatre" class="tab-pane fade in active">
+        <div class="row">
+          <div class="col-md-6">
+            <h4>Theatre Details</h4><hr/>
+            <div class="form-group">
+              <input type="text" class="form-control" ng-model="theatreCtrl.TheatreName" placeholder="Theatre Name"></input>
+            </div>
+            <div class="form-group">
+              <input type="text" class="form-control" ng-model="theatreCtrl.PlaceName" placeholder="Place Name"></input>
+            </div>
+            <div class="form-group">
+              <input type="text" class="form-control" ng-model="theatreCtrl.City" placeholder="City"></input>
+            </div>
+            <div class="form-group">
+              <input type="time" class="form-control" id="showTime" ng-model="theatreCtrl.showTime" placeholder="Show Time"></input><br/>
+              <button id="addShowTimes" class=" form-control btn btn-primary" ng-click="theatreCtrl.addTimes()">Add Show Times</button>
+            </div>
+              <div class="well">Show Timings</span>
+                <button class="btn btn-danger glyphicon glyphicon-remove" ng-click=theatreCtrl.removeTime(shwTime) ng-repeat="shwTime in theatreCtrl.showTimes">{{shwTime.showTime}}</button>
+              </div>
           </div>
-      </div>
-      <div class="col-md-6">
-          <h4>Theatre Capacity</h4><hr/>
+          <div class="col-md-6">
+              <h4>Theatre Capacity</h4><hr/>
+              <div class="row">
+                <div class="col-md-7">
+                  <div class="row">
+                    <div class="col-md-4">
+                      <span style="color:grey">Select Class</span>
+                    </div>
+                    <div class="col-md-4">
+                        <input type="Radio" class="silver" ng-model="theatreCtrl.selectedClassOption" name="class" value="Silver"><span id="sil">Silver</span></input>
+                    </div>
+                    <div class="col-md-4">
+                        <input type="Radio" class="gold" ng-model="theatreCtrl.selectedClassOption" name="class" value="Gold"><span id="gol">Gold</span></input>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-5">
+                </div>
+              </div><hr/>
+              <div class="row">
+                <div class="col-md-3">
+                  <span style="color:grey">Select Rows</span>
+                </div>
+                <div class="col-md-2">
+                  First<select style="height:25px" size="1" multiple="multiple" type="text" ng-model="theatreCtrl.firstRow">
+                    <option ng-repeat="row in theatreCtrl.rows">{{row}}</option>
+                  </select></div>
+                <div class="col-md-2">
+                  Last<select style="height:25px" size="1" multiple="multiple" type="text" ng-model="theatreCtrl.lastRow">
+                    <option ng-repeat="row in theatreCtrl.rows">{{row}}</option>
+                  </select>
+                </div>
+                <div class="col-md-5">
+                    <input type="Number" placeholder="NumberOfSeats" ng-model="theatreCtrl.numOfSeats"></input>
+                </div>
+              </div><hr/>
+              <div class="form-group">
+                <button class="form-control btn btn-primary" ng-click="theatreCtrl.addRow()">Add Class</button>
+              </div>
+              <div class="well">Gold Class</span>
+                <button class="btn btn-danger glyphicon glyphicon-remove" ng-show="theatreCtrl.gold" ng-click="theatreCtrl.removeGoldClassRow()">{{theatreCtrl.goldClassSeats.FirstRow}}{{theatreCtrl.goldClassSeats.NumberOfSeats}}-{{theatreCtrl.goldClassSeats.LastRow}}{{theatreCtrl.goldClassSeats.NumberOfSeats}}</button>
+              </div>
+              <div class="well">Silver Class</span>
+                <button class="btn btn-danger glyphicon glyphicon-remove" ng-show="theatreCtrl.silver" ng-click="theatreCtrl.removeSilverClassRow()">{{theatreCtrl.silverClassSeats.FirstRow}}{{theatreCtrl.silverClassSeats.NumberOfSeats}}-{{theatreCtrl.silverClassSeats.LastRow}}{{theatreCtrl.silverClassSeats.NumberOfSeats}}</button>
+              </div>
+            </div>
+          </div>
           <div class="row">
-          <div class="col-md-7"><div class="row"><div class="col-md-4">
-          <span style="color:grey">Select Class</span></div><div class="col-md-4">
-          <input type="Radio" class="silver" ng-model="theatreCtrl.selectedClassOption" name="class" value="Silver"><span id="sil">Silver</span></input></div><div class="col-md-4">
-          <input type="Radio" class="gold" ng-model="theatreCtrl.selectedClassOption" name="class" value="Gold"><span id="gol">Gold</span></input></div>
-      </div></div>
-      <div class="col-md-5">
-        <div class="form-group">
-          <button style="height:25px" class="form-control btn btn-danger">Clear Selection</button>
+            <div class="col-md-6">
+              <div class="form-group">
+                <button class="btn btn-success form-control" ng-click="theatreCtrl.AddTheatre()">Submit <span class="glyphicon glyphicon-share"/></button>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <button class=" form-control btn btn-danger clear" ng-click="theatreCtrl.clearFields()">Clear <span class="glyphicon glyphicon-refresh"/></button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!--Manage Teatres-->
+        <div class="tab-pane fade" id="managetheatre">
+          <h3 id="mangetheatres"> Edit Theatres in Namma Cinema Database </h3>
+          <div class="row">
+            <div class="col-md-12">
+              <table class="table update"><tr><th>Theatre Name</th><th>Place Name</th><th>City</th>
+                <th>Seats</th><th>Edit</th></tr>
+                  <tr ng-repeat="t in theatreCtrl.theatres"><td>{{t.TheatreName}}</td><td>{{t.PlaceName}}</td><td>{{t.City}}</td>
+                    <td><table><tr>
+                      <td>SilverClass <i class="fa fa-group"/>{{t.SilverClassSeats.FirstRow}}{{t.SilverClassSeats.NumberOfSeats}}to{{t.SilverClassSeats.LastRow}}{{t.SilverClassSeats.NumberOfSeats}}Seats</td>
+                      <td>GoldClass <i class="fa fa-group"/>{{t.GoldClassSeats.FirstRow}}{{t.GoldClassSeats.NumberOfSeats}}to{{t.GoldClassSeats.LastRow}}{{t.GoldClassSeats.NumberOfSeats}}Seats</td>
+                    </tr></table></td>
+                    <td><button class="btn btn-primary glyphicon glyphicon-pencil" data-toggle="modal" data-target="#myModal" ng-click=theatreCtrl.editTheatre(t)></button></td></tr>
+              </table>
+            </div>
+          </div>
+        </div>
+
+      <!--Update ShowTimes Theatres-->
+      <div class="tab-pane fade" id="managetheatreShowtimes">
+        <h3 id="mangetheatres"> Edit Theatres ShowTimes in Namma Cinema Database </h3>
+        <div class="row">
+          <div class="col-md-12">
+            <table class="table updatetime"><tr><th>Theatre Name</th><th>Place Name</th><th>City</th><th>Show Times</th>
+              <th>Edit ShowTimes</th></tr>
+                <tr ng-repeat="t in theatreCtrl.theatres"><td>{{t.TheatreName}}</td><td>{{t.PlaceName}}</td><td>{{t.City}}</td>
+                  <td><table><tr><td ng-repeat="showtimes in t.ShowTimes track by $index"><span class="glyphicon glyphicon-time">{{showtimes.showTime}}</span></td></tr></table></td>
+                  <td><button class="btn btn-primary glyphicon glyphicon-edit" data-toggle="modal" data-target="#myModaltime" ng-click=theatreCtrl.editTheatreShowTimes(t)></button></td>
+                </tr>
+            </table>
+          </div>
         </div>
       </div>
-    </div><hr/>
-      <div class="row">
-        <div class="col-md-3">
-          <span style="color:grey">Select Rows</span>
-        </div>
-        <div class="col-md-2">
-          First<select style="height:25px" size="1" multiple="multiple" type="text" ng-model="theatreCtrl.firstRow">
-            <option ng-repeat="row in theatreCtrl.rows">{{row}}</option>
-          </select></div>
-        <div class="col-md-2">
-          Last<select style="height:25px" size="1" multiple="multiple" type="text" ng-model="theatreCtrl.lastRow">
-            <option ng-repeat="row in theatreCtrl.rows">{{row}}</option>
-          </select>
-        </div>
-          <div class="col-md-5">
-            <input type="Number" placeholder="NumberOfSeats" ng-model="theatreCtrl.numOfSeats"></input></div></div><hr/>
-          <div class="form-group">
-            <button class="form-control btn btn-primary" ng-click="theatreCtrl.addRow()">Add Class</button>
-          </div>
-          <div class="well">Gold Class</span>
-            <button class="btn btn-danger glyphicon glyphicon-remove" ng-repeat="seat in theatreCtrl.goldClassSeats" ng-click="theatreCtrl.removeGoldClassRow(seat)">{{seat.FirstRow}}{{seat.NumberOfSeats}}-{{seat.LastRow}}{{seat.NumberOfSeats}}</button>
-          </div>
-          <div class="well">Silver Class</span>
-            <button class="btn btn-danger glyphicon glyphicon-remove" ng-repeat="seat in theatreCtrl.silverClassSeats" ng-click="theatreCtrl.removeSilverClassRow(seat)">{{seat.FirstRow}}{{seat.NumberOfSeats}}-{{seat.LastRow}}{{seat.NumberOfSeats}}</button>
+
+      <!--Delete Theatres-->
+      <div class="tab-pane fade" id="deletetheatre">
+        <h3 id="mangetheatres"> Delete Theatres From Namma Cinema Database </h3>
+        <div class="row">
+          <div class="col-md-12">
+            <table class="table delete"><thead><tr><th>Theatre Name</th><th>Place Name</th><th>City</th><th>Show Times</th>
+              <th>Seats</th><th>Delete</th></tr>
+                <tr ng-repeat="t in theatreCtrl.theatres"><td>{{t.TheatreName}}</td><td>{{t.PlaceName}}</td><td>{{t.City}}</td>
+                  <td><table><tr><td ng-repeat="showtimes in t.ShowTimes"><span class="glyphicon glyphicon-time">{{showtimes.showTime}}</span></td></tr></table></td>
+                  <td><table><tr>
+                    <td>SilverClass <i class="fa fa-group"/>{{t.SilverClassSeats.FirstRow}}{{t.SilverClassSeats.NumberOfSeats}}to{{t.SilverClassSeats.LastRow}}{{t.SilverClassSeats.NumberOfSeats}}Seats</td>
+                    <td>GoldClass <i class="fa fa-group"/>{{t.GoldClassSeats.FirstRow}}{{t.GoldClassSeats.NumberOfSeats}}to{{t.GoldClassSeats.LastRow}}{{t.GoldClassSeats.NumberOfSeats}}Seats</td>
+                </tr></table></td>
+                  <td><button class="btn btn-danger glyphicon glyphicon-trash" ng-click=theatreCtrl.RemoveTheatre(t)></button></td>
+                </tr></thead>
+            </table>
           </div>
         </div>
       </div>
-    </div>
+
+      <!--View Theatres-->
+  <div class="tab-pane fade" id="viewtheatre">
+    <h3 id="mangetheatres"> Theatres Details In Namma Cinema Database </h3>
     <div class="row">
-      <div class="col-md-4"></div>
-      <div class="col-md-4">
-        <div class="form-group">
-          <button class="btn btn-success form-control" ng-click="theatreCtrl.AddTheatre()">submit</button>
+      <div class="col-md-12">
+        <table class="table delete"><thead><tr><th>Theatre Name</th><th>Place Name</th><th>City</th><th>Show Times</th>
+          <th>Seats</th></tr>
+            <tr ng-repeat="t in theatreCtrl.theatres"><td>{{t.TheatreName}}</td><td>{{t.PlaceName}}</td><td>{{t.City}}</td>
+              <td><table><tr><td ng-repeat="showtimes in t.ShowTimes"><span class="glyphicon glyphicon-time">{{showtimes.showTime}}</span></td></tr></table></td>
+              <td><table><tr>
+                <td>SilverClass <i class="fa fa-group"/>{{t.SilverClassSeats.FirstRow}}{{t.SilverClassSeats.NumberOfSeats}}to{{t.SilverClassSeats.LastRow}}{{t.SilverClassSeats.NumberOfSeats}}Seats</td>
+                <td>GoldClass <i class="fa fa-group"/>{{t.GoldClassSeats.FirstRow}}{{t.GoldClassSeats.NumberOfSeats}}to{{t.GoldClassSeats.LastRow}}{{t.GoldClassSeats.NumberOfSeats}}Seats</td>
+              </tr></table></td>
+            </tr></thead>
+          </table>
         </div>
-        </div><div class="col-md-4"></div>
+      </div>
+    </div><!--End Of Theatre Panes-->
+  </div><!--End Of Theatre Content-->
+
+  <!--Modal To Update Theatre Details-->
+  <div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Enter Theatre Details To Update</h4>
+          </div>
+          <div class="modal-body">
+            <div class="from-group"><h4>Theatre Details :</h4>
+                Theatre Name <input class="form-control" type="text" ng-model="theatreCtrl.theatreToUpdateTheatreName"/>
+                Place Name <input class="form-control" type="text" ng-model="theatreCtrl.theatreToUpdatePlaceName"/>
+                City<input class="form-control" type="text" ng-model="theatreCtrl.theatreToUpdateCity"/>
+              </hr><h4>Theatre Capacity :</h4><hr/>
+              <div class="row">
+                <div class="col-md-7">
+                  <div class="row">
+                    <div class="col-md-4">
+                      <span style="color:grey">Select Class</span>
+                    </div>
+                    <div class="col-md-4">
+                        <input type="Radio" class="silver" ng-model="theatreCtrl.theatreToUpdateSelectedClassOption" name="class" value="Silver"><span id="sil">Silver</span></input>
+                    </div>
+                    <div class="col-md-4">
+                        <input type="Radio" class="gold" ng-model="theatreCtrl.theatreToUpdateSelectedClassOption" name="class" value="Gold"><span id="gol">Gold</span></input>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-5">
+                </div>
+              </div><hr/>
+              <div class="row">
+                <div class="col-md-3">
+                  <span style="color:grey">Select Rows</span>
+                </div>
+                <div class="col-md-2">
+                  First<select style="height:25px" size="1" multiple="multiple" type="text" ng-model="theatreCtrl.theatreToUpdateFirstRow">
+                    <option ng-repeat="row in theatreCtrl.rows">{{row}}</option>
+                  </select>
+                </div>
+                <div class="col-md-2">
+                  Last<select style="height:25px" size="1" multiple="multiple" type="text" ng-model="theatreCtrl.theatreToUpdateLastRow">
+                    <option ng-repeat="row in theatreCtrl.rows">{{row}}</option>
+                  </select>
+                </div>
+                <div class="col-md-5">
+                  <input type="Number" placeholder="NumberOfSeats" ng-model="theatreCtrl.theatreToUpdateNumOfSeats"></input>
+                </div>
+              </div><hr/>
+              <div class="form-group">
+                  <button class="form-control btn btn-primary" ng-click="theatreCtrl.addUpdatedRow()">Add Class</button>
+              </div>
+
+                <div class="well">Silver Class Seats
+                  <button class="btn btn-danger glyphicon glyphicon-remove" ng-show="theatreCtrl.theatreToUpdateSilver" ng-click="theatreCtrl.removeUpdatedSilverClassRow()">{{theatreCtrl.theatreToUpdateSilverClassRow.FirstRow}}{{theatreCtrl.theatreToUpdateSilverClassRow.NumberOfSeats}}-{{theatreCtrl.theatreToUpdateSilverClassRow.LastRow}}{{theatreCtrl.theatreToUpdateSilverClassRow.NumberOfSeats}}</button>
+                </div>
+                <div class="well">Gold Class Seats
+                  <button class="btn btn-danger glyphicon glyphicon-remove" ng-show="theatreCtrl.theatreToUpdateGold" ng-click="theatreCtrl.removeUpdatedGoldClassRow()">{{theatreCtrl.theatreToUpdateGoldClassRow.FirstRow}}{{theatreCtrl.theatreToUpdateGoldClassRow.NumberOfSeats}}-{{theatreCtrl.theatreToUpdateGoldClassRow.LastRow}}{{theatreCtrl.theatreToUpdateGoldClassRow.NumberOfSeats}}</button>
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" ng-click=theatreCtrl.updateTheatre()>Save Edit</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!--Modal To Update Theatre ShowTime Details-->
+      <div id="myModaltime" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Edit Theatre Show Times Details To Update</h4>
+            </div>
+            <div class="modal-body">
+              <div class="from-group">
+                <div class="form-group">
+                  <input type="time" class="form-control" id="showTime" ng-model="theatreCtrl.showTimetoUpdate"></input><br/>
+                  <button id="addShowTimes" class=" form-control btn btn-primary" ng-click="theatreCtrl.addTimesToUpdate()">Add Show Times</button>
+                </div>
+                <div class="well">Show Timings</span>
+                  <button class="btn btn-danger glyphicon glyphicon-remove" ng-click=theatreCtrl.removeTimeToUpdate(shwTime) ng-repeat="shwTime in theatreCtrl.showTimesToUpdate">{{shwTime.showTime}}</button>
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" ng-click=theatreCtrl.updateTheatreShowTimes()>Save Edit</button>
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-    <div class="row">
-    <div class="col-md-12">
-      <table class="table"><thead><tr><th>Theatre Name</th><th>Place Name</th><th>City</th><th>Show Times</th>
-        <th>Seats</th><th>Delete</th><th>Edit</th></tr>
-          <tr ng-repeat="t in theatreCtrl.theatres"><td>{{t.TheatreName}}</td><td>{{t.PlaceName}}</td><td>{{t.City}}</td>
-            <td><table><tr><td ng-repeat="showtimes in t.ShowTimes"><span class="glyphicon glyphicon-time">{{showtimes.showTime}}</span></td></tr></table></td>
-            <td><table><tr>
-              <td><i class="fa fa-">SilverClass {{t.SilverClassSeats.FirstRow}}to{{t.SilverClassSeats.LastRow}}{{t.SilverClassSeats.NumberOfSeats}}Seats</i></td>
-              <td><span class="glyphicon glyphicon-time">GoldClass {{t.GoldClassSeats.FirstRow}}to{{t.GoldClassSeats.LastRow}}{{t.GoldClassSeats.NumberOfSeats}}Seats</span></td>
-            </tr></table></td>
-            <td><button class="btn btn-danger glyphicon glyphicon-trash" ng-click=theatreCtrl.RemoveTheatre(t)></button></td>
-            <td><button class="btn btn-primary glyphicon glyphicon-pencil" ng-click=theatreCtrl.EditTheatre(t)></button></td></tr></thead>
-      </table>
-    </div>
-  </div>
-</div>
-</body>
+  </body>
