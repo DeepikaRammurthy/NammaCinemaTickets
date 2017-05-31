@@ -50,7 +50,7 @@
               <h5 class="mapmenu">Select Show Times </h5>
               <table border="2">
                 <tr><th width="200px">TheatreName</th><th width="200px">PlaceName</th><th width="200px">ShowTimes</th></tr>
-                <tr ng-repeat="theatre in moviesmappingCtrl.displayTheatres"><td>{{theatre.TheatreName}}</td><td>{{theatre.PlaceName}}</td>
+                <tr ng-repeat="theatre in moviesmappingCtrl.displayTheatres | filter:{City:moviesmappingCtrl.selectedCityName}"><td>{{theatre.TheatreName}}</td><td>{{theatre.PlaceName}}</td>
                 <td><table><tr><td class="timestomap" ng-repeat="showtime in theatre.ShowTimes" ng-click="moviesmappingCtrl.addTimes(showtime,theatre)">
                 <div class="mark"><span class="glyphicon glyphicon-check uncheck"/></div><a href="#"><span class="glyphicon glyphicon-time">{{showtime.showTime}}</span></a></td>
                 </tr></table></td></tr>

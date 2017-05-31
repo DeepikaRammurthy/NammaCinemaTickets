@@ -3,6 +3,10 @@
   position: static;
   min-width: 1200px;
 }
+h4
+{
+  color:#990033;
+}
 .title
 {
   max-width: 800px;
@@ -83,6 +87,11 @@ h2
 {
   font-size: 18px;
 }
+.hearts
+{
+  font-size: 22px;
+  text-align: left;
+}
 p{
   color:#990033;
 }
@@ -106,8 +115,38 @@ table img
 }
 .fa-heart
 {
-  color:990033;
+  color:#990033;
 }
+
+.fa-heart-o
+{
+  color:#990033;
+}
+.ratehearts
+{
+  display: inline;
+  font-size: 25px;
+}
+.empty
+{
+  margin-left:-31px;
+}
+.full
+{
+  margin-left:-31px;
+  visibility: hidden;
+}
+
+.fullinv
+{
+  visibility: hidden;
+}
+
+.fullv
+{
+  visibility: visible;
+}
+
 .book
 {
   background-color:#990033;

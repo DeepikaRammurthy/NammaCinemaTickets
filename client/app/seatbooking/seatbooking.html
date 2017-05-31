@@ -9,7 +9,7 @@
         </div>
         <div class="modal-body">
             <input Type="text" placeholder="UserName" ng-model="seatbookingCtrl.userName"/>
-            <input type="number" placeholder="Mobile Number" ng-model="seatbookingCtrl.mobile"/>
+            <span style="color:red">+91</span><input type="number" placeholder="Mobile Number" ng-model="seatbookingCtrl.mobile"/>
             <h5>Choose Card</h5>
             <input type="radio" name="card" value="cc" ng-model="seatbookingCtrl.card"/>Credit Card<input type="radio" name="card" value="dc" ng-model="seatbookingCtrl.card"/>Debit Card<i class="fa fa-cc-visa"/><i class="fa fa-cc-amex"/><i class="fa fa-cc-mastercard"/><i class="fa fa-cc-paypal"/>
             <h4>Enter Card Details</h4>
@@ -32,7 +32,7 @@
   </ul>
   <div class="tab-content">
     <!-- Seatings-->
-    <div id="#seatbooking" class="tab-pane fade in active">
+    <div id="#seatbooking" class="tab-pane active">
       <div class="row">
         <div class="col-md-6">
           <p class="ttip glyphicon glyphicon-info-sign" data-toggle="popover" data-placement="bottom" data-original-title="Theatre Design for visual effects only."

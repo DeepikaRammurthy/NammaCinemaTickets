@@ -241,6 +241,7 @@
     /** Edit Show Time Details For Theatre **/
     editTheatreShowTimes(theatre)
     {
+      this.showTimesToUpdate=[];
       this.showTimesToUpdateTheatre=theatre;
       for(var index=0;index<theatre.ShowTimes.length;index++)
       this.showTimesToUpdate[index]=theatre.ShowTimes[index];

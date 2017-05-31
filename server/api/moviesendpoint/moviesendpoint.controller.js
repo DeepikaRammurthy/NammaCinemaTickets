@@ -86,7 +86,7 @@ export function update(req, res) {
   if (req.body._id) {
     delete req.body._id;
   }
-  return Moviesendpoint.findById(req.params.id).exec()
+  return Moviesendpoint.findByIdAndUpdate(req.params.id,req.body).exec()
     .then(handleEntityNotFound(res))
     .then(saveUpdates(req.body))
     .then(respondWithResult(res))

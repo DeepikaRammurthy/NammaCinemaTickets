@@ -7,8 +7,8 @@ var MoviesendpointSchema = new mongoose.Schema({
   Name: String,
   Year: Number,
   Genre: String,
-  MovieRating:Number,
-  MovieReviews:Array
+  MovieReviews:[{}],
+  AvgRatings:[]
 });
 
 export default mongoose.model('Movie', MoviesendpointSchema);

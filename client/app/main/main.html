@@ -9,6 +9,10 @@
             <h4 class="modal-title">Select Theatre, Date And ShowTime</h4>
           </div>
           <div class="modal-body">
+            <div ng-hide="homeCtrl.moviemapped">
+              <h3>Currently No Shows Available</h3>
+            </div>
+            <div ng-show="homeCtrl.moviemapped">
             Check Theatres<hr/>
               <select type="text" ng-model="homeCtrl.theatreToBookFinal">
                 <option ng-repeat="theatreToBook in homeCtrl.theatresToBookFinal | unique:TheareName">{{theatreToBook}}</option>
@@ -18,16 +22,17 @@
                 <select type="text" ng-model="homeCtrl.dateToBookFinal">
                   <option ng-repeat="dateToBook in homeCtrl.datesToBookFinal | unique:Date">{{dateToBook}}</option>
                 </select>
+                <hr/><button class="btn btn-default" ng-click="homeCtrl.bookTime()">Check Times</button>
               </div>
 
-              <hr/><button class="btn btn-default" ng-click="homeCtrl.bookTime()">Check Times</button>
+
               <div ng-show="homeCtrl.dateBooked">
                 <select type="text" ng-model="homeCtrl.timeToBookFinal">
                   <option ng-repeat="timeToBook in homeCtrl.timesToBookFinal | unique:ShowTime">{{timeToBook}}</option>
-                </select>
+                </select><hr/><button class="btn btn-default" ng-click="homeCtrl.bookClass()">Check Class</button>
               </div>
 
-              <hr/><button class="btn btn-default" ng-click="homeCtrl.bookClass()">Check Class</button>
+
               <div ng-show="homeCtrl.timeBooked">
                 <select type="text" ng-model="homeCtrl.classToBookFinal">
                   <option ng-repeat="classToBook in homeCtrl.classesToBookFinal">{{classToBook}}</option>
@@ -39,7 +44,7 @@
 
                 <!-- <a href="#" ng-click="homeCtrl.screen()">Click Here To Save The Selections For Seating.</a> -->
               <!-- </div> -->
-
+              </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
             </div>
@@ -59,7 +64,6 @@
             <h2>Namma, Cinema Tickets</h2>
             <p class="lead">Book Your show Anytime, Anywhere !</p>
           </div>
-          <button class="bookseats" ng-show="homeCtrl.enable" ><i class="fa fa-group"/><a href="/seatbooking">Select Seats</a></button>
         </div>
         <div class="col-md-7">
           <div class="container" id="mymoviesrow">
@@ -130,15 +134,12 @@
         <div class="container">
           <div class="row">
             <div class="col-md-12">
-              <table class="movie" ng-repeat="movi in homeCtrl.movie">
+              <table class="movie" ng-repeat="movi in homeCtrl.movieR">
                 <tr>
                   <td><img class="img-circle" src="{{movi.Poster}}"/><span class="heart" data-toggle="popover"
                     data-placement="bottom" data-original-title="Please Login to Review and Rate the Movie." data-content="Thank You!.">Ratings
-                    <i class="fa fa-heart"></i>
-                    <i class="fa fa-heart"></i>
-                    <i class="fa fa-heart"></i>
-                    <i class="fa fa-heart-o"></i>
-                    <i class="fa fa-heart-o"></i></span>
+                    <span ng-repeat="heartRate in movi.AvgRatings" class="hearts"><i class="fa fa-heart"></i> </span>
+                    </span>
                   </td>
                   <td>
                     <table>
@@ -148,7 +149,7 @@
                       <tr><td><button class="book" ng-click="homeCtrl.bookMovie(movi)"
                         data-toggle="modal" data-target="#mybook"><i class="fa fa-book">Book Now</i></button>
                           </td>
-                          <td><button class="review" ng-click="homeCtrl.reviewMovie(m)"
+                          <td><button class="review" ng-click="homeCtrl.setMoviToReview(movi)"
                             data-toggle="modal" data-target="#moviesReviews"><i class="fa fa-comments">Reviews</i></button></td></tr>
                     </table></td>
                 </tr>
@@ -165,24 +166,33 @@
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal">&times;</button>
-              <h4 class="modal-title">{{homeCtrl.ReviewsOfMovie}} Reviews and Ratings</h4>
+              <h4 class="modal-title">{{homeCtrl.setMovieToReview.Name}} Reviews and Ratings</h4>
             </div>
             <div class="modal-body">
-              <div ng-repeat="reviews in homeCtrl.ReviewsOfMovie.MovieReviews">
+              <div ng-show="homeCtrl.noReviewsFound">
+                <h4>No Reviews Found , Be The First To Review.</h4>
+              </div>
+              <div ng-repeat="userReviews in homeCtrl.reviews">
                 <div class="well">
-                  {{reviews}}
+                  <h4>{{userReviews.User}}</h4>
+                  {{userReviews.Review}}
+                  <h4><i ng-repeat="heartRate in userReviews.Rating track by $index" class="fa fa-heart"> </i></h4>
                 </div>
               </div>
               <div class="inputreview">
-                <textarea rows="4" cols="50">
+                <textarea rows="4" cols="50" ng-model="homeCtrl.review">
                 </textarea>
               </div>
               <div class="rate">
                 <!-- rating input-->
+                <div ng-repeat="heart in homeCtrl.hearts" class="ratehearts" ng-click="homeCtrl.rateMovie(heart)">
+                  <i class="fa fa-heart {{heart.classInv}}"/>
+                  <i class="fa fa-heart-o {{heart.classEmpty}}"/>
+                </div>
               </div>
             </div>
             <div class="modal-footer">
-              <button class="btn btn-primary">Submit</button>
+              <button class="btn btn-primary" ng-click="homeCtrl.reviewMovie()" data-dismiss="modal">Submit</button>
               <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
             </div>
         </div>

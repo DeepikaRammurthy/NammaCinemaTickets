@@ -84,6 +84,8 @@
              this.classToBookFinal=sessionStorage.getItem('bookclassname');
              this.classToBookFinal=JSON.parse(this.classToBookFinal);
 
+             if(this.classToBookFinal==undefined)
+              this.$window.location="http://localhost:9000/main";
              /** Select SeatBooking For The Booked Show  **/
             if(this.classToBookFinal!=undefined)
             {
@@ -183,46 +185,55 @@
       {
         console.log(this.seatBookings[1]._id);
         console.log(this.seatBookings[1].GoldClassSeats);
-        if(this.seatsDetails.length>0&&(this.userName!=undefined||this.userName!=" ")&&(this.mobile!=undefined||this.mobile!="")&&
-        this.card!=undefined&&(this.cardNumber!=undefined)&&this.cvv!=undefined&&this.expDate!=undefined)
+        if(this.userName!=undefined&&this.userName.length>0&&this.mobile!=undefined&&
+        this.card!=undefined&&this.cardNumber!=undefined&&this.cvv!=undefined&&this.expDate!=undefined)
         {
-          this.tickets=true;
-          sessionStorage.setItem('tickets',JSON.stringify(this.tickets));
-          for(var index=0;index<this.seatbookingFinal.GoldClassSeats.length;index++)
+          console.log(this.expDate+" "+(new Date()));
+          if(this.mobile.toString().length==10&&this.cardNumber.toString().length==16&&
+          this.cvv.toString().length==3&&this.expDate>(new Date()))
           {
-            for(var seat=0;seat<this.seatbookingFinal.GoldClassSeats[index].SeatsInRow.length;seat++)
-            {
-              if(this.seatbookingFinal.GoldClassSeats[index].SeatsInRow[seat].Booked==true)
-            this.seatbookingFinal.GoldClassSeats[index].SeatsInRow[seat].Class="seatBooked";
-            }
-          }
+              this.tickets=true;
+              sessionStorage.setItem('tickets',JSON.stringify(this.tickets));
+              for(var index=0;index<this.seatbookingFinal.GoldClassSeats.length;index++)
+              {
+                for(var seat=0;seat<this.seatbookingFinal.GoldClassSeats[index].SeatsInRow.length;seat++)
+                {
+                  if(this.seatbookingFinal.GoldClassSeats[index].SeatsInRow[seat].Booked==true)
+                this.seatbookingFinal.GoldClassSeats[index].SeatsInRow[seat].Class="seatBooked";
+                }
+              }
 
-          for(var index=0;index<this.seatbookingFinal.SilverClassSeats.length;index++)
-          {
-            for(var seat=0;seat<this.seatbookingFinal.SilverClassSeats[index].SeatsInRow.length;seat++)
-            {
-              if(this.seatbookingFinal.SilverClassSeats[index].SeatsInRow[seat].Booked==true)
-              this.seatbookingFinal.SilverClassSeats[index].SeatsInRow[seat].Class="seatBooked";
-            }
-          }
-          this.seatsDetailsFinal=this.seatsDetails;
-          sessionStorage.setItem('seatsDetailsFinal',JSON.stringify(this.seatsDetailsFinal));
-          this.noOfTicketsFinal=this.noOfTickets;
-          sessionStorage.setItem('noOfTicketsFinal',JSON.stringify(this.noOfTicketsFinal));
-          this.totalPriceFinal=this.totalPrice;
-          sessionStorage.setItem('totalPriceFinal',JSON.stringify(this.totalPriceFinal));
-          sessionStorage.setItem('userName',JSON.stringify(this.userName));
-          sessionStorage.setItem('mobile',JSON.stringify(this.mobile));
+              for(var index=0;index<this.seatbookingFinal.SilverClassSeats.length;index++)
+              {
+                for(var seat=0;seat<this.seatbookingFinal.SilverClassSeats[index].SeatsInRow.length;seat++)
+                {
+                  if(this.seatbookingFinal.SilverClassSeats[index].SeatsInRow[seat].Booked==true)
+                  this.seatbookingFinal.SilverClassSeats[index].SeatsInRow[seat].Class="seatBooked";
+                }
+              }
+              this.seatsDetailsFinal=this.seatsDetails;
+              sessionStorage.setItem('seatsDetailsFinal',JSON.stringify(this.seatsDetailsFinal));
+              this.noOfTicketsFinal=this.noOfTickets;
+              sessionStorage.setItem('noOfTicketsFinal',JSON.stringify(this.noOfTicketsFinal));
+              this.totalPriceFinal=this.totalPrice;
+              sessionStorage.setItem('totalPriceFinal',JSON.stringify(this.totalPriceFinal));
+              sessionStorage.setItem('userName',JSON.stringify(this.userName));
+              sessionStorage.setItem('mobile',JSON.stringify(this.mobile));
 
-          this.$http.put('/api/seatbookendpoints/'+this.seatbookingFinal._id,{
-            GoldClassSeats:this.seatbookingFinal.GoldClassSeats,
-            SilverClassSeats:this.seatbookingFinal.SilverClassSeats
-          });
-          alert("Seats Booked Succesfully. Check Ticket Details.");
-          this.$window.location.reload();
-        }
-        else
-          alert("Please Enter the Valid Details");
+              this.$http.put('/api/seatbookendpoints/'+this.seatbookingFinal._id,{
+                GoldClassSeats:this.seatbookingFinal.GoldClassSeats,
+                SilverClassSeats:this.seatbookingFinal.SilverClassSeats
+              });
+              alert("Seats Booked Succesfully. Check Ticket Details.");
+              this.$window.location.reload();
+            }
+            else if(this.cvv.toString().length!=3)alert("Enter Valid 3 digit cvv back of card");
+            else if(this.cardNumber.toString().length!=16)alert("Enter Valid 16 digit card number");
+            else if(this.mobile.toString().length!=10)alert("Enter Valid 10 digit mobile number");
+            else alert("Enter Valid Expiry Date");
+          }
+            else
+              alert("Please Enter All The Required Details");
       }
 
       /** Clear Selections And Refresh The Page For Another Booking **/

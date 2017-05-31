@@ -30,13 +30,13 @@
         <li class="menu dropdown" ng-show="nav.isLoggedIn()"><a class="dropdown-toggle" data-toggle="dropdown" style="color:#990033" class="navbar-text"><span class="menu glyphicon glyphicon-user"></span> Hello, {{ nav.getCurrentUser().name }}<strong class="caret"></strong></a>
           <ul class="dropdown-menu">
             <li class="dropdown-header"><span class="menu glyphicon glyphicon-briefcase"></span> Administrator Operations</li>
-            <li class="menu"><a style="color:#990033" href="/movies">Movies</a></li>
-            <li class="menu"><a style="color:#990033" href="/theatre">Theatres</a></li>
-            <li class="menu"><a style="color:#990033" href="/moviesmapping">Movie Theatre Mappings</a></li>
+            <li class="menu" ng-show="nav.isAdmin()"><a style="color:#990033" href="/movies">Movies</a></li>
+            <li class="menu" ng-show="nav.isAdmin()"><a style="color:#990033" href="/theatre">Theatres</a></li>
+            <li class="menu" ng-show="nav.isAdmin()"><a style="color:#990033" href="/moviesmapping">Movie Theatre Mappings</a></li>
             <li class="menu"><a style="color:#990033" href="/seatbooking">Book Show</a></li>
             <li class="divider"></li>
             <li class="dropdown-header"><i class="fa fa-wrench"></i> More Services</li>
-            <li class="menu drop-down" ng-show="nav.isAdmin()" ng-class="{active: nav.isActive('/admin')}"><a style="color:#990033" href="/admin"><i class="fa fa-user-times"></i> User Controls</a></li>
+            <li class="menu drop-down" ng-show="nav.isAdmin()"><a style="color:#990033" href="/admin"><i class="fa fa-user-times"></i> User Controls</a></li>
               <li class="menu" ng-show="nav.isLoggedIn()" ng-class="{active: nav.isActive('/settings')}"><a style="color:#990033" href="/settings"><span class="glyphicon glyphicon-cog"></span> Profile Settings</a></li>
           <li class="divider"></li>
           <li class="menu" ng-show="nav.isLoggedIn()"><a style="color:#990033" href="/logout"><span class="glyphicon glyphicon-off"></span>Logout</a></li>
