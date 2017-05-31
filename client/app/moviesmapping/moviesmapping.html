@@ -205,7 +205,7 @@
 
       <!--Delete SeatBookings-->
       <div id="deleteseatbooking" class="tab-pane fade">
-          <table border="2">
+          <table class="seatsdisplay" border="2">
             <tr><th>TheatreName</th><th>PlaceName</th><th>CityName</th><th>MovieName</th><th>Date</th><th>ShowTime</th><th>GoldClassPrice</th><th>SilverClassPrice</th><th>Delete</th></tr>
             <tr ng-repeat="seatBooking in moviesmappingCtrl.seatBookings">
               <td>{{seatBooking.TheatreName}}</td><td>{{seatBooking.PlaceName}}</td><td>{{seatBooking.CityName}}</td>
